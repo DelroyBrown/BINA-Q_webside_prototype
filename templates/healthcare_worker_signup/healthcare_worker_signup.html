@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'healthcare_worker_signup/includes/css_links.html' %}
+{% include 'healthcare_worker_signup/includes/javascript_links.html' %}
+
+
+<div class="body-bg formify-quiz-layout-7">
+
+
+    <section class="formify-form">
+
+
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12  formify-form__acenter">
+                    <!-- Welcome Banner -->
+                    <div
+                        class="formify-form__layout formify-form__100vh  formify-form__layout--quiz formify-form__layout--quiz--v5 p-0  formify-bg-none">
+
+                        <div style="background-color: #1E1E1E;"
+                            class="formify-form__quiz-banner formify-form__quiz-banner--v7 formify-bg-cover formify-form__ccolumn">
+                            <!-- Sidebar Content -->
+                            <div class="formify-form__dside">
+                                <!-- Sidebar Top -->
+                                <div class="formify-form__dside-top">
+
+                                    <div class="formify-form__dside-top-inner">
+                                        <div class="formify-form__dside-logo">
+                                            <a href="#"><img src="{% static 'images/bina_logo.png' %}" alt="#"></a>
+                                        </div>
+                                        <div class="formify-form__dside-content">
+                                            <h2 class="formify-form__dside-title">Connect with BINA-Q by registering!
+                                            </h2>
+                                            <p style="color: #889CE7;" class="formify-form__dside-text">Sign up for
+                                                BINA: Streamline your
+                                                healthcare data with AI, ensuring privacy and instant access. Connect
+                                                for personalized solutions within 24 hours.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="formify-form__dside-content-btm">
+                                        <p class="formify-form__dside-big">Curious about what we can do for you? We are
+                                            happy to tell you more!</p>
+                                        <div class="formify-form__dside-content-support">
+
+                                            <!-- Support IMG-->
+                                            <ul class="formify-form__dside-list">
+                                                <li><a href="">contact@binaq.co.uk</a></li>
+                                                <li><a href="">(123) 456 7890</a></li>
+                                            </ul>
+                                            <div class="formify-form__dside-bottom">
+                                                <p class="formify-form__dside-bottomptext text-light">
+                                                    Already have an account? <a href="#">Sign in
+                                                        here</a>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Sidebar Content -->
+                        </div>
+
+                        <div
+                            class="formify-form__layout--quiz-main formify-form__layout--quiz-main--v7 formify-bg-cover formify-form__ccolumn">
+                            <!-- Form Area -->
+                            <div class="formify-form__inner--quiz formify-form__inner--quiz--v5">
+                                <!-- End Quiz Timing -->
+                                <div class="formify-form__form-box formify-form__form-box--v5">
+
+
+                                    <!-- Form Area -->
+                                    <form method="POST" id="multiStepForm"
+                                    class="formify-forms formify-forms__quiz formify-forms__quiz--v6" action="#">
+                                    {% csrf_token %}
+                                        <div class="tab-content">
+                                            <!-- Step 1: Personal Information -->
+                                            {% include 'healthcare_worker_signup/includes/1_person_information.html' %}
+                                            
+                                            <!-- Step 2 -->
+                                            {% include 'healthcare_worker_signup/includes/2_department_information.html' %}
+                                            
+                                            
+                                            <!-- Step 3 -->
+                                            {% include 'healthcare_worker_signup/includes/3_organisation_information.html' %}
+                                            
+
+                                         
+                                        </div>
+                                    </form>
+                                    <!-- End Form Area -->
+
+                                </div>
+                            </div>
+                            <!-- End Form Area -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        const form = $('#multiStepForm');
+        const steps = form.find('.tab-pane');
+        const links = $('.formify-form__nav a'); // Updated selector to target navigation links
+        const progress = $('.progress-bar');
+        const completionPercent = $('.formify-form__quiz-banner-progress--percent');
+
+        let currentStep = 0;
+
+        function showStep(stepIndex) {
+            steps.removeClass('show active');
+            $(steps[stepIndex]).addClass('show active');
+            links.removeClass('active');
+            $(links[stepIndex]).addClass('active');
+            updateProgress();
+            $('.formify-form__quiz-current').addClass('zoom-out');
+            setTimeout(function () {
+                $('.formify-form__quiz-current').text(stepIndex + 1).removeClass('zoom-out').addClass('zoom-in');
+            }, 300);
+            updateCompletionPercent();
+        }
+
+        function updateProgress() {
+            const percent = (currentStep / (steps.length - 1)) * 100;
+            progress.css('width', percent + '%');
+        }
+
+        function updateCompletionPercent() {
+            const percent = ((currentStep + 1) / steps.length) * 100;
+            completionPercent.text(`${percent.toFixed(0)}% Complete`);
+        }
+
+        $('.next-step').click(function (event) {
+            event.preventDefault();
+            currentStep++;
+            if (currentStep < steps.length) {
+                showStep(currentStep);
+            } else {
+                // Handle form submission or completion here
+            }
+        });
+
+        $('.prev-step').click(function (event) {
+            event.preventDefault();
+            currentStep--;
+            if (currentStep >= 0) {
+                showStep(currentStep);
+            }
+        });
+
+        links.click(function (event) { // Added click event for navigation links
+            event.preventDefault();
+            const clickedStep = links.index(this);
+            if (clickedStep >= 0 && clickedStep < steps.length) {
+                currentStep = clickedStep;
+                showStep(currentStep);
+            }
+        });
+
+        showStep(currentStep);
+    });
+
+</script>
+
+
+
+{% endblock %}

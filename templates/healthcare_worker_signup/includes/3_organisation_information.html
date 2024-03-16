@@ -1,0 +1,119 @@
+{% load static %}
+
+<!-- Step 3 -->
+<div class="tab-pane fade" id="step3">
+    <!-- Progress Bar -->
+    <div class="formify-steps-progress">
+        <h4 class="formify-steps-progress__title">Step 3 <span>Users Organisation</span></h4>
+        <div class="formify-steps-progress__list">
+            <div class="formify-steps-list__single done"></div>
+            <div class="formify-steps-list__single done"></div>
+            <div class="formify-steps-list__single active"></div>
+        </div>
+    </div>
+    <!-- End Progress Bar -->
+    <div class="formify-forms__quiz-single">
+        <h3 class="formify-forms__quiz-title formify-forms__quiz-title--v6">
+            Organisation Information</h3>
+        <p class="formify-forms__quiz-text m-0">Enter the details of the organisation the user works for</p>
+        <div class="formify-forms__quiz-form formify-mg-top-20">
+            <div class="formify-forms__quiz-form">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_organisation_name">Organisation Name:</label>
+                                <input type="text" id="organisation_organisation_name" name="org-organisation_name" class="form-control"
+                                    required value="{{ organisation_form.organisation_name.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_building_name_or_number">Building Name or Number:</label>
+                                <input type="text" id="organisation_building_name_or_number" name="org-building_name_or_number"
+                                    class="form-control" value="{{ organisation_form.building_name_or_number.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_street">Street:</label>
+                                <input type="text" id="organisation_street" name="org-street" class="form-control"
+                                    value="{{ organisation_form.street.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_town_or_city">Town/City:</label>
+                                <input type="text" id="organisation_town_or_city" name="org-town_or_city" class="form-control"
+                                    value="{{ organisation_form.town_or_city.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_postcode">Postcode:</label>
+                                <input type="text" id="organisation_postcode" name="org-postcode" class="form-control"
+                                    value="{{ organisation_form.postcode.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_county">County:</label>
+                                <input type="text" id="organisation_county" name="org-county" class="form-control"
+                                    value="{{ organisation_form.county.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_country">Country:</label>
+                                <input type="text" id="organisation_country" name="org-country" class="form-control"
+                                    value="{{ organisation_form.country.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="organisation_ods_code">Organisation ODS Code:</label>
+                                <input type="text" id="organisation_ods_code" name="org-ods_code" class="form-control"
+                                    value="{{ organisation_form.ods_code.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <div class="formify-forms__spaceb">
+                                <div class="formify-forms__checkbox">
+                                    <label class="m-0" for="checkbox">By
+                                        continuing the next level, you agree
+                                        to <a href="#">privacy policy</a>
+                                        and <a href="#">terms of
+                                            use</a></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Group -->
+                <div class="form-group formify-mg-top-40">
+                    <div class="formify-forms__button">
+                        <button class="formify-btn prev-step">Previous</button>
+                        <button class="formify-btn" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

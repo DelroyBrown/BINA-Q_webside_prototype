@@ -1,0 +1,101 @@
+{% load static %}
+
+<div class="tab-pane fade show active" id="step2">
+    <!-- Progress Bar -->
+    <div class="formify-steps-progress">
+        <h4 class="formify-steps-progress__title">Step 2 <span>Users Department</span></h4>
+        <div class="formify-steps-progress__list">
+            <div class="formify-steps-list__single done"></div>
+            <div class="formify-steps-list__single active"></div>
+            <div class="formify-steps-list__single"></div>
+        </div>
+    </div>
+    <!-- End Progress Bar -->
+    <div class="formify-forms__quiz-single">
+        <h3 class="formify-forms__quiz-title formify-forms__quiz-title--v6">
+            Department Information</h3>
+        <p class="formify-forms__quiz-text m-0">Enter the details of the department the user works in</p>
+        <div class="formify-forms__quiz-form formify-mg-top-20">
+            <div class="formify-forms__quiz-form">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="department_department_name">Department Name:</label>
+                                <input type="text" id="department_department_name" name="dept-department_name"
+                                    class="form-control" required value="{{ department_form.department_name.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="department_department_type">Department Type:</label>
+                                <select id="department_department_type" name="dept-department_type"
+                                    class="form-control">
+                                    {% for value, label in department_form.department_type.field.choices %}
+                                    <option value="{{ value }}" {% if department_form.department_type.value == value %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="department_department_id">Department ID:</label>
+                                <input type="text" id="department_department_id" name="dept-department_id"
+                                    class="form-control" value="{{ department_form.department_id.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="department_department_contact_number">Department Contact Number:</label>
+                                <input type="text" id="department_department_contact_number" name="dept-department_contact_number"
+                                    class="form-control" value="{{ department_form.department_contact_number.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="role_role">Users Role:</label>
+                                <select id="role_role" name="role-role" class="form-control">
+                                    <option>--------</option>
+                                    {% for value, label in role_form.role.field.choices %}
+                                    <option value="{{ value }}" {% if role_form.role.value == value %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <div class="formify-forms__spaceb">
+                                <div class="formify-forms__checkbox">
+                                    <label class="m-0" for="checkbox">By
+                                        continuing the next level, you agree
+                                        to <a href="#">privacy policy</a>
+                                        and <a href="#">terms of
+                                            use</a></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Group -->
+                <div class="form-group formify-mg-top-40">
+                    <div class="formify-forms__button">
+                        <button class="formify-btn prev-step">Previous</button>
+                        <button class="formify-btn next-step">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Group -->
+</div>

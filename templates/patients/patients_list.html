@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% include 'healthcare_worker_profile/includes/css_links.html' %}
+{% include 'healthcare_worker_profile/includes/javascript_links.html' %}
+
+
+<!--*******************
+        Preloader start
+    ********************-->
+<div id="preloader">
+    <div class="sk-three-bounce">
+        <div class="sk-child sk-bounce1"></div>
+        <div class="sk-child sk-bounce2"></div>
+        <div class="sk-child sk-bounce3"></div>
+    </div>
+</div>
+<!--*******************
+        Preloader end
+    ********************-->
+
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+
+    <!-- NAV HEADER -->
+    {% include 'healthcare_worker_profile/includes/hw_profile_nav_header.html' %}
+    <!-- CHAT BOX -->
+    {% include 'healthcare_worker_profile/includes/hw_profile_chat.html' %}
+    <!-- MAIN HEADER -->
+    {% include 'healthcare_worker_profile/includes/hw_profile_main_header.html' %}
+    <!-- SIDEBAR -->
+    {% include 'healthcare_worker_profile/includes/hw_profile_sidebar.html' %}
+
+
+    <!--**********************************
+            Content body start
+        ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+
+            <div class="form-head d-flex mb-3 mb-md-4 align-items-start">
+                <div class="me-auto d-none d-lg-block">
+                    <a href="patient-details.html" class="btn btn-primary btn-rounded">+ Connect With New BINA-Q
+                        Patient</a>
+                </div>
+
+                <div class="input-group search-area ms-auto d-inline-flex me-3">
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <div class="input-group-append">
+                        <button type="button" class="input-group-text"><i class="flaticon-381-search-2"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <div id="example5_wrapper" class="dataTables_wrapper no-footer">
+                                    <table id="example5"
+                                        class="table table-striped patient-list mb-4 dataTablesCard fs-14 dataTable no-footer"
+                                        aria-describedby="example5_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example5"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label=": activate to sort column descending"
+                                                    style="width: 30px;">
+                                                    <div class="checkbox text-end align-self-center">
+                                                        <div class="form-check custom-checkbox ">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="checkAll" required="">
+                                                            <label class="form-check-label" for="checkAll"></label>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Patient ID: activate to sort column ascending"
+                                                    style="width: 103.109px;">Patient ID</th>
+
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Patient Name: activate to sort column ascending"
+                                                    style="width: 168.25px;">Patient Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1" aria-label="Age: activate to sort column ascending"
+                                                    style="width: 168.25px;">Age</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Medical Condition: activate to sort column ascending"
+                                                    style="width: 177.531px;">Medical Condition</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1" aria-label="Status: activate to sort column ascending"
+                                                    style="width: 148.531px;">Status</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Next Appointment: activate to sort column ascending"
+                                                    style="width: 96.3438px;">Next Appointment</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
+                                                    colspan="1" aria-label=": activate to sort column ascending"
+                                                    style="width: 96.625px;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd">
+                                                <td class="sorting_1">
+                                                    <div class="checkbox text-end align-self-center">
+                                                        <div class="form-check custom-checkbox ">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="customCheckBox1" required="">
+                                                            <label class="form-check-label"
+                                                                for="customCheckBox1"></label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><a href="" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">#P-00012</a></td>
+                                                <td>James Brown</td>
+                                                <td>74</td>
+                                                <td>Dementia</td>
+                                                <td>
+                                                    <span class="text-nowrap">
+                                                        <svg class="me-2" width="9" height="9" viewBox="0 0 9 9"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <circle cx="4.5" cy="4.5" r="4.5" fill="#FFB800"></circle>
+                                                        </svg>
+                                                        <span class="text-warning">Appointment Pending</span>
+                                                    </span>
+                                                </td>
+                                                <td>April 2nd</td>
+                                                <td class="text-end">
+                                                    <a href="javascript:void(0);" class="me-3">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z"
+                                                                stroke="#3E4954" stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </a>
+                                                    <a href="javascript:void(0);">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3 6H5H21" stroke="#F46B68" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
+                                                                stroke="#F46B68" stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td class="sorting_1">
+                                                    <div class="checkbox text-end align-self-center">
+                                                        <div class="form-check custom-checkbox ">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="customCheckBox1" required="">
+                                                            <label class="form-check-label"
+                                                                for="customCheckBox1"></label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>#P-00012</td>
+                                                <td>Alexia Kev</td>
+                                                <td>42</td>
+                                                <td>Alcoholic</td>
+                                                <td>
+                                                    <span class="text-nowrap">
+                                                        <svg class="me-2" width="9" height="9" viewBox="0 0 9 9"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <circle cx="4.5" cy="4.5" r="4.5" fill="red"></circle>
+                                                        </svg>
+                                                        <span class="text-danger">Missed Appointment</span>
+                                                    </span>
+                                                </td>
+                                                <td>March 5th</td>
+                                                <td class="text-end">
+                                                    <a href="javascript:void(0);" class="me-3">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M17 3C17.2626 2.73735 17.5744 2.52901 17.9176 2.38687C18.2608 2.24473 18.6286 2.17157 19 2.17157C19.3714 2.17157 19.7392 2.24473 20.0824 2.38687C20.4256 2.52901 20.7374 2.73735 21 3C21.2626 3.26264 21.471 3.57444 21.6131 3.9176C21.7553 4.26077 21.8284 4.62856 21.8284 5C21.8284 5.37143 21.7553 5.73923 21.6131 6.08239C21.471 6.42555 21.2626 6.73735 21 7L7.5 20.5L2 22L3.5 16.5L17 3Z"
+                                                                stroke="#3E4954" stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </a>
+                                                    <a href="javascript:void(0);">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M3 6H5H21" stroke="#F46B68" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
+                                                                stroke="#F46B68" stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                    <div class="dataTables_info" id="example5_info" role="status" aria-live="polite">
+                                        Showing 1 to 10 of 11 entries</div>
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example5_paginate"><a
+                                            class="paginate_button previous disabled" aria-controls="example5"
+                                            aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1"
+                                            id="example5_previous">Previous</a><span><a class="paginate_button current"
+                                                aria-controls="example5" role="link" aria-current="page" data-dt-idx="0"
+                                                tabindex="0">1</a><a class="paginate_button " aria-controls="example5"
+                                                role="link" data-dt-idx="1" tabindex="0">2</a></span><a
+                                            class="paginate_button next" aria-controls="example5" role="link"
+                                            data-dt-idx="next" tabindex="0" id="example5_next">Next</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">James Brown's Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- PATIENT INFO: LEFT -->
+                        <div class="col-md-6 col-lg-6">
+                            <ul>
+                                <li>
+                                    <h6>Full Name:</h6>
+                                    <p>James Brown</p>
+                                </li>
+                                <li>
+                                    <h6>Gender At Birth:</h6>
+                                    <p>Male (he/him)</p>
+                                </li>
+                                <li>
+                                    <h6>Age:</h6>
+                                    <p>74</p>
+                                </li>
+                                <li>
+                                    <h6>Birth Date:</h6>
+                                    <p>May 27th - 1950</p>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <h6>Contact Details:</h6>
+                                        <li>
+                                            <p class="mb-1">
+                                                <i class="fa-solid fa-phone" style="padding-right: 10px;"></i>01494
+                                                522365
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <i class="fa-solid fa-envelope" style="padding-right: 10px;"></i>jbrown@email.com
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h6>Address:</h6>
+                                    <p class="mb-1">55 Lane Road</p>
+                                    <p class="mb-1">High Wycombe</p>
+                                    <p class="mb-1">Buckinghamshire</p>
+                                    <p class="mb-1">HP11 2UU</p>
+                                    <p class="mb-1">United Kingdom</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- PATIENT INFO: RIGHT -->
+                        <div class="col-md-6 col-lg-6">
+                            <ul>
+                                <li>
+                                    <h6 class="mb-2">Medical Conditions:</h6>
+                                    <p class="mb-1">Dementia</p>
+                                    <p class="mb-1">Headache</p>
+                                </li>
+                                <li>
+                                    <h6 class="mt-2">Current Prescriptions:</h6>
+                                    <p class="mb-1">Dilatol</p>
+                                    <p class="mb-1">Milatolene</p>
+                                    <p class="mb-1">Literine</p>
+                                </li>
+                    
+                                <li>
+                                    <ul>
+                                        <h6>Immunisation History:</h6>
+                                        <li>
+                                            <p class="mb-1">
+                                                Covid-19 (22/03/2021)
+                                            </p>
+                                            <p class="mb-1">
+                                                MMR (2/07/2013)
+                                            </p>
+                                            <p class="mb-1">
+                                                DTaP (8/12/2017)
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                     
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    <a href="{% url 'BINA_patients:patient-detail' %}" class="btn btn-primary"><i class="fa-solid fa-eye" style="padding-right: 10px;"></i>View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+            Footer start
+        ***********************************-->
+    
+    <!--**********************************
+            Footer end
+        ***********************************-->
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+
+
+{% endblock %}

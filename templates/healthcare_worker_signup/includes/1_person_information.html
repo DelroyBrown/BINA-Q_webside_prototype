@@ -1,0 +1,124 @@
+{% load static %}
+
+<!-- Step 1: Personal Information -->
+<div class="tab-pane fade" id="step1">
+    <!-- Progress Bar -->
+    <div class="formify-steps-progress">
+        <h4 class="formify-steps-progress__title">Step 1 <span>Healthcare Workers Information</span></h4>
+        <div class="formify-steps-progress__list">
+            <div class="formify-steps-list__single active"></div>
+            <div class="formify-steps-list__single"></div>
+            <div class="formify-steps-list__single"></div>
+        </div>
+    </div>
+    <!-- End Progress Bar -->
+    <div class="formify-forms__quiz-single">
+        <h3 class="formify-forms__quiz-title formify-forms__quiz-title--v6">
+            Healthcare Workers Information</h3>
+        <p class="formify-forms__quiz-text m-0">The personal details of the user you're registering</p>
+        <div class="formify-forms__quiz-form formify-mg-top-20">
+            <div class="formify-forms__quiz-form">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_first_name">First Name:</label>
+                                <input type="text" id="worker_first_name" name="worker-first_name" class="form-control"
+                                    required value="{{ worker_form.first_name.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_other_names">Other Names:</label>
+                                <input type="text" id="worker_other_names" name="worker-other_names"
+                                    class="form-control" value="{{ worker_form.other_names.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_last_name">Last Name:</label>
+                                <input type="text" id="worker_last_name" name="worker-last_name" class="form-control"
+                                    required value="{{ worker_form.last_name.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_contact_number">Contact Number:</label>
+                                <input type="tel" id="worker_contact_number" name="worker-contact_number"
+                                    class="form-control" required value="{{ worker_form.contact_number.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_work_email">Work Email:</label>
+                                <input type="email" id="worker_work_email" name="worker-work_email" class="form-control"
+                                    required value="{{ worker_form.work_email.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_specialises_in">Specialises In:</label>
+                                <input type="text" id="worker_specialises_in" name="worker-specialises_in"
+                                    class="form-control" placeholder="eg. Dementia"
+                                    value="{{ worker_form.specialises_in.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_ods_code">ODS Code:</label>
+                                <input type="text" id="worker_ods_code" name="worker-ods_code" class="form-control"
+                                    required value="{{ worker_form.ods_code.value }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <div class="formify-forms__input">
+                                <label for="worker_access_level">Access Level:</label>
+                                <select id="worker_access_level" name="worker-access_level" class="form-control">
+                                    <option>--------</option>
+                                    {% for value, label in worker_form.access_level.field.choices %}
+                                    <option value="{{ value }}" {% if worker_form.access_level.value == value %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <div class="formify-forms__spaceb">
+                                <div class="formify-forms__checkbox">
+                                    <label class="m-0" for="checkbox">By
+                                        continuing the next level, you agree
+                                        to <a href="#">privacy policy</a>
+                                        and <a href="#">terms of
+                                            use</a></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Group -->
+                <div class="form-group formify-mg-top-40">
+                    <div class="formify-forms__button">
+                        <button class="formify-btn next-step">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Form Group -->
+</div>
