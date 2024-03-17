@@ -53,8 +53,8 @@ class Role(models.Model):
         choices=ROLES, max_length=50, blank=False, null=False, default=""
     )
 
-    def __str__(self):
-        return self.role
-
     def get_role_display(self):
         return dict(Role.ROLES)[self.role]
+
+    def __str__(self):
+        return self.get_role_display()
