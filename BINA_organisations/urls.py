@@ -1,8 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from . import views
+from django.urls import path
+
 
 app_name = "BINA_organisations"
 
 urlpatterns = [
-    # path('', views)
+    path("", views.organisation_members_list, name="organisation-members-list"),
 ]

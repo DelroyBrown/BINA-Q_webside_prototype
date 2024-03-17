@@ -1,6 +1,12 @@
 {% load static %}
 
-<div class="col-xl-8">
+<style>
+    .phone-icon {
+        color: #FD6262;
+    }
+</style>
+
+<div class="col-xl-6">
     <div class="profile">
         <div class="staff">
             <!-- THIS IS THE CURRENT PROFILE IMAGE -->
@@ -66,21 +72,15 @@
                     <h4 class="mb-0">Specialises In:</h4>
                     <p class="ms-2 mb-0">{{ worker.specialises_in }}</p>
                 </div>
-            </div>
-            <div class="location mt-4">
-                <div class="mb-3">
-                    <span><i class="fa-solid fa-location-dot me-2 text-primary"></i>San
-                        Francisco, USA</span>
-                    <span><i class="fa fa-building text-secondary me-2"></i> ICU
-                        Department</span>
+                <hr>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="phone-icon fa-solid fa-phone me-2"></i>
+                    <h4 class="mb-0">Today's Department Contact:</h4>
+                    <p class="ms-2 mb-0">{{ worker.department.department_contact_number }}</p>
                 </div>
-                <div>
-                    <span><i class="fa fa-phone me-2 text-primary"></i> +1
-                        1234598767</span>
-                    <span><i
-                            class="fa fa-envelope me-2 text-secondary"></i>hello@gmail.com</span>
-                </div>
+
             </div>
+          
         </div>
     </div>
 </div>
