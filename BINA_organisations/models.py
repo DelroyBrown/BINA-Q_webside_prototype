@@ -14,6 +14,9 @@ class Organisation(models.Model):
     postcode = models.CharField(max_length=100, blank=False, null=False, default="")
     country = models.CharField(max_length=100, blank=False, null=False, default="")
     ods_code = models.CharField(max_length=25, blank=False, null=False, default="")
+    organisation_logo = models.ImageField(
+        upload_to="organisation_logos/", null=True, blank=True
+    )
 
     def __str__(self):
         return self.organisation_name

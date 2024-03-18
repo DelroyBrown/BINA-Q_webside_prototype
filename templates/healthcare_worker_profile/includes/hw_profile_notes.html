@@ -23,7 +23,6 @@
             {% if latest_note %}
             <small class="fw-bold mb-5">{{ formatted_datetime }}</small><br>
             <p class="mt-2">{{ latest_note.note_text }}</p>
-            <!-- Initial setup for the urgency icons in a muted state, no need for Django template logic here -->
             <i id="urgency-low" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'LOW' %}text-success{% else %}text-muted{% endif %}"></i>
             <i id="urgency-medium" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'MEDIUM' %}text-warning{% else %}text-muted{% endif %}"></i>
             <i id="urgency-high" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'HIGH' %}text-danger{% else %}text-muted{% endif %}"></i>

@@ -32,10 +32,13 @@ def generate_temporary_password():
 
 def healthcare_worker_signup(request):
     if request.method == "POST":
-        worker_form = HealthcareWorkerForm(request.POST, prefix="worker")
+        # Note the addition of request.FILES for handling file uploads.
+        worker_form = HealthcareWorkerForm(request.POST, request.FILES, prefix="worker")
         department_form = DepartmentForm(request.POST, prefix="dept")
         role_form = RoleForm(request.POST, prefix="role")
-        organisation_form = OrganisationForm(request.POST, prefix="org")
+        organisation_form = OrganisationForm(
+            request.POST, request.FILES, prefix="org"
+        )  # Added request.FILES here
 
         if (
             worker_form.is_valid()
@@ -44,10 +47,9 @@ def healthcare_worker_signup(request):
             and organisation_form.is_valid()
         ):
             # Before creating a new organisation, check if it already exists
-            org_name = organisation_form.cleaned_data["organisation_name"]
-            organisation, created = Organisation.objects.get_or_create(
-                organisation_name=org_name
-            )
+            # Note: If organisation_name is not unique or if you're relying on other fields to check for uniqueness,
+            # you might need to adjust the get_or_create logic.
+            organisation = organisation_form.save()
 
             department = department_form.save(commit=False)
             department.organisation = organisation
@@ -70,26 +72,14 @@ def healthcare_worker_signup(request):
             temporary_password = generate_temporary_password()
 
             user = User.objects.create_user(
-                username=worker.bina_q_id, email=worker.work_email
+                username=worker.bina_q_id,
+                email=worker.work_email,
+                password=temporary_password,  # Directly setting the password while creating the user
             )
-            user.set_password(temporary_password)
             worker.user = user
-            user.save()
-
-            # Ensure to save the healthcare worker after creating the associated user
             worker.save()
 
-            message = (
-                f"New healthcare worker signed up:\n\n"
-                f"Name: {worker.first_name} {worker.last_name}\n"
-                f"Department: {department.department_name} ({department.get_department_type_display()})\n"
-                f"Role: {role.get_role_display()}\n"
-                f"Organisation: {organisation.organisation_name}\n"
-                f"Contact Number: {worker.contact_number}\n"
-                f"Work Email: {worker.work_email}\n"
-                f"BINA-Q ID: {worker.bina_q_id}\n"
-                f"Temporary Password: {temporary_password}\nPlease change your password upon first login."
-            )
+            message = f"New healthcare worker signed up:\n\nName: {worker.first_name} {worker.last_name}\nDepartment: {department.department_name}\nRole: {role.role}\nOrganisation: {organisation.organisation_name}\nContact Number: {worker.contact_number}\nWork Email: {worker.work_email}\nBINA-Q ID: {worker.bina_q_id}\nTemporary Password: {temporary_password}\nPlease change your password upon first login."
 
             send_mail(
                 "New Healthcare Worker Signup",
@@ -148,31 +138,22 @@ def healthcare_user_profile(request):
         worker = HealthcareWorker.objects.get(user=request.user)
     except HealthcareWorker.DoesNotExist:
         worker = None
-
-    notes = request.user.healthcare_worker.notes.all()
+    notes = request.user.healthcare_worker.notes.all().order_by("-created_at")
     notes_form = HealthcareWorkerPersonalNoteForm()
-    latest_note = (
-        HealthcareWorkerPersonalNotes.objects.filter(
-            healthcare_worker=request.user.healthcare_worker
-        )
-        .order_by("-created_at")
-        .first()
-    )
-
-    # Initialize formatted_datetime and urgency_level to None outside the if block
+    latest_note = notes.first()
     formatted_datetime = None
     urgency_level = None
 
     if latest_note:
         formatted_datetime = date_format(latest_note.created_at, "d F, Y H:i")
-        urgency_level = latest_note.note_urgency  # Assign urgency_level here
+        urgency_level = latest_note.note_urgency
 
     context = {
         "worker": worker,
         "notes": notes,
         "notes_form": notes_form,
         "latest_note": latest_note,
-        "urgency_level": urgency_level,  # Use the variable in the context
+        "urgency_level": urgency_level,
         "formatted_datetime": formatted_datetime,
     }
     return render(
@@ -187,7 +168,6 @@ def add_note(request):
             note = form.save(commit=False)
             note.healthcare_worker = request.user.healthcare_worker
             note.save()
-            # Format the datetime of note creation
             formatted_datetime = date_format(note.created_at, "d F, Y H:i")
             return JsonResponse(
                 {
@@ -203,12 +183,21 @@ def add_note(request):
 
 
 def healthcare_worker_notes(request):
+    try:
+        worker = HealthcareWorker.objects.get(user=request.user)
+    except HealthcareWorker.DoesNotExist:
+        worker = None
+    notes = request.user.healthcare_worker.notes.all().order_by("-created_at")
+    context = {
+        "worker": worker,
+        "notes": notes,
+    }
+
     return render(
-        request, "healthcare_worker_saved_notes/healthcare_worker_saved_notes.html"
+        request,
+        "healthcare_worker_saved_notes/healthcare_worker_saved_notes.html",
+        context,
     )
-
-
-from django.contrib.auth import logout
 
 
 def healthcare_user_logout(request):
