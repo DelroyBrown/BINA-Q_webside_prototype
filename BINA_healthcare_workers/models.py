@@ -48,18 +48,24 @@ class HealthcareWorker(models.Model):
 
 class HealthcareWorkerPersonalNotes(models.Model):
     NOTE_URGENCY_LEVEL = [
-        ('LOW', 'Low'),
-        ('MEDIUM', 'Medium'),
-        ('HIGH', 'High'),
+        ("LOW", "Low"),
+        ("MEDIUM", "Medium"),
+        ("HIGH", "High"),
     ]
     healthcare_worker = models.ForeignKey(
         HealthcareWorker,
         on_delete=models.CASCADE,
         related_name="notes",
     )
-    note_text = models.TextField(max_length=1000, blank=True, null=True)
+    note_text = models.TextField(max_length=1000, blank=True, null=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)
-    note_urgency = models.CharField(choices=NOTE_URGENCY_LEVEL, blank=False, null=False, max_length=12, default='LOW')
+    note_urgency = models.CharField(
+        choices=NOTE_URGENCY_LEVEL,
+        blank=False,
+        null=False,
+        max_length=12,
+        default="LOW",
+    )
 
     def __str__(self):
         return f"Note for {self.healthcare_worker.first_name} {self.healthcare_worker.last_name} on {self.created_at.strftime('%Y-%m-%d')}"

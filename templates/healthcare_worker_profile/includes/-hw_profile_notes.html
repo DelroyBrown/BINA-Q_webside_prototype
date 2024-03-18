@@ -101,9 +101,11 @@
                             <form method="post" action="{% url 'BINA_healthcare_workers:add_note' %}">
                                 {% csrf_token %}
                                 <div class="mb-3">
-                                    <textarea class="form-control" name="note_text" cols="40" rows="10" required=""
-                                        id="id_note_text">
+                                    <textarea class="form-control"
+                                        placeholder="Write a personal note or reminder here—it'll stay on your dashboard as a constant memo until a new one is added. Set its priority level below."
+                                        name="note_text" cols="40" rows="10" required id="id_note_text">
                                     </textarea>
+
                                     <div class="mt-2">
                                         <select class="form-select form-control" name="note_urgency"
                                             id="id_note_urgency" required>

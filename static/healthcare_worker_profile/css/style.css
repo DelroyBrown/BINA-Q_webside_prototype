@@ -25371,7 +25371,7 @@ svg.pulse-svg .third-circle {
     background: #1f1e26 !important;
 }
 
-[data-theme-version="dark"] .staf-info span {
+[data-theme-version="dark"] .staff-2-info span {
     color: #fff;
 }
 
@@ -37495,23 +37495,34 @@ span#counter {
     .staff img {
         height: 100%;
     }
+
+    .staff-2-info {
+        margin: 30px 0px;
+    }
+
+    .staff-3-info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-.staf-info span {
+.staff-2-info span {
     padding-right: 1rem;
     color: black;
     display: inline-block;
 }
 
 @media only screen and (max-width: 575px) {
-    .staf-info span {
+    .staff-2-info span {
         padding-right: 13px;
         font-size: 13px;
     }
 }
 
-.staf-info h3,
-.staf-info .h3 {
+.staff-2-info h3,
+.staff-2-info .h3 {
     font-weight: 600;
 }
 
@@ -37743,6 +37754,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         text-align: center;
     }
 
+    .profile-main-image {
+        width: 100% !important;
+        height: auto !important;
+        margin: 25px 0px;
+    }
+
+    /* .profile-info-box {
+        justify-content: center !important;
+    } */
     .profile .staff {
         margin-right: 0;
     }
