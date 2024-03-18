@@ -1,13 +1,21 @@
 import random
 import string
+from django.utils.formats import date_format
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-from .forms import HealthcareWorkerForm, DepartmentForm, RoleForm, OrganisationForm
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from .models import HealthcareWorker
+from .models import HealthcareWorker, HealthcareWorkerPersonalNotes
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
+from .forms import (
+    HealthcareWorkerForm,
+    DepartmentForm,
+    RoleForm,
+    OrganisationForm,
+    HealthcareWorkerPersonalNoteForm,
+)
 
 
 def generate_bina_q_id(first_name, last_name, organisation_name, department_name):
@@ -122,7 +130,11 @@ def healthcare_user_login(request):
                 return redirect("BINA_healthcare_workers:healthcare-user-profile")
     else:
         form = AuthenticationForm()
-    return render(request, "healthcare_worker_profile/healthcare_worker_login.html", {"form": form})
+    return render(
+        request,
+        "healthcare_worker_profile/healthcare_worker_login.html",
+        {"form": form},
+    )
 
 
 @login_required
@@ -132,4 +144,46 @@ def healthcare_user_profile(request):
     except HealthcareWorker.DoesNotExist:
         worker = None
 
-    return render(request, "healthcare_worker_profile/healthcare_worker_profile.html", {"worker": worker})
+    notes = request.user.healthcare_worker.notes.all()
+    notes_form = HealthcareWorkerPersonalNoteForm()
+    latest_note = (
+        HealthcareWorkerPersonalNotes.objects.filter(healthcare_worker=request.user.healthcare_worker)
+        .order_by("-created_at")
+        .first()
+    )
+    if latest_note:
+        formatted_datetime = date_format(latest_note.created_at, "d F, Y H:i")
+    else:
+        formatted_datetime = None
+
+    context = {
+        "worker": worker,
+        "notes": notes,
+        "notes_form": notes_form,
+        "latest_note": latest_note,
+        "formatted_datetime": formatted_datetime,
+    }
+    return render(
+        request, "healthcare_worker_profile/healthcare_worker_profile.html", context
+    )
+
+
+def add_note(request):
+    if request.method == "POST":
+        form = HealthcareWorkerPersonalNoteForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.healthcare_worker = request.user.healthcare_worker
+            note.save()
+            # Format the datetime of note creation
+            formatted_datetime = date_format(note.created_at, "d F, Y H:i")
+            return JsonResponse(
+                {
+                    "success": True,
+                    "note_text": note.note_text,
+                    "created_at": formatted_datetime,
+                }
+            )
+        else:
+            return JsonResponse({"error": form.errors}, status=400)
+    return JsonResponse({"error": "Bad Request"}, status=400)

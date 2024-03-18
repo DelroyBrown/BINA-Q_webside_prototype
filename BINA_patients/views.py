@@ -4,15 +4,15 @@ from BINA_healthcare_workers.models import HealthcareWorker
 
 def patients_list(request):
     try:
-        worker = HealthcareWorker.objects.get(user=request.user)
+        current_worker = HealthcareWorker.objects.get(user=request.user)
     except HealthcareWorker.DoesNotExist:
-        worker = None
-    return render(request, "patients/patients_list.html", {"worker": worker})
+        current_worker = None
+    return render(request, "patients/patients_list.html", {"current_worker": current_worker})
 
 
 def patient_detail(request):
     try:
-        worker = HealthcareWorker.objects.get(user=request.user)
+        current_worker = HealthcareWorker.objects.get(user=request.user)
     except HealthcareWorker.DoesNotExist:
-        worker = None
-    return render(request, "patients/patient_detail.html", {"worker": worker})
+        current_worker = None
+    return render(request, "patients/patient_detail.html", {"current_worker": current_worker})

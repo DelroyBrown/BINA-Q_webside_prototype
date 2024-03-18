@@ -3,7 +3,7 @@
 <div class="col-xl-6 col-xxl-6">
     <div class="card patient-detail">
         <div class="card-header border-0 pb-0">
-            <h4 class="fs-20 font-w600 text-white">Note for Patient</h4>
+            <h4 class="fs-20 font-w600 text-white">Personal Notes</h4>
             <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip1)">
@@ -20,12 +20,12 @@
             </a>
         </div>
         <div class="card-body fs-14 font-w300">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum
+            <small class="fw-bold mb-5">{{ formatted_datetime }}</small><br>
+            {% if latest_note %}
+            <p class="mt-2">{{ latest_note.note_text }}</p>
+            {% else %}
+            NO NOTES TO DISPLAY
+            {% endif %}
         </div>
     </div>
 </div>
@@ -40,12 +40,16 @@
             </div>
             <div class="modal-body">
                 <div class="card">
-                  
+
                     <div class="card-body">
                         <div class="basic-form">
-                            <form>
+                            <form method="post" action="{% url 'BINA_healthcare_workers:add_note' %}">
+                                {% csrf_token %}
                                 <div class="mb-3">
-                                    <textarea class="form-control" rows="8" id="comment"></textarea>
+                                    <textarea class="form-control" name="note_text" cols="40" rows="10" required=""
+                                        id="id_note_text"></textarea>
+                                    <button type="submit" class="mt-3 btn btn-primary">+ Add Note</button>
+                                    <button type="button" class="mt-3 btn" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </form>
                         </div>
@@ -53,32 +57,45 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">+ Add Note</button>
+
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // script.js
     $(document).ready(function () {
-        // Initially, the user is not following
-        let isFollowing = false;
+        // When the form is submitted...
+        $('form').on('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submit action
 
-        // Function to toggle the button text and class
-        function toggleFollowButton() {
-            if (isFollowing) {
-                $("#follow-button").removeClass("following").css({ 'background-color': '#36c95f', 'border-color': '#36c95f' }).text("Follow");
-            } else {
-                $("#follow-button").addClass("following").css({ 'background-color': '#369dc9', 'border-color': '#369dc9' }).text("Following");
-            }
-            isFollowing = !isFollowing;
-        }
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'), // This gets the action URL of the form
+                data: $(this).serialize(), // This serializes the form's elements to a string for submission
+                success: function (response) {
+                    // Assuming 'response' includes the latest note text and creation date
+                    if (response.success) {
+                        // Construct the HTML content with the note text and formatted datetime
+                        var updatedContent = '<small class="fw-bold mb-5">' + response.created_at + '</small><br><p class="mt-2">' + response.note_text + '</p>';
 
-        // Handle button click event
-        $("#follow-button").on("click", function () {
-            toggleFollowButton();
+                        // Update the note display area with the new content
+                        $('.card-body.fs-14.font-w300').html(updatedContent);
+
+                        // Optionally, clear the textarea for new input and close the modal
+                        $('#exampleModal').modal('hide');
+                        alert('Note added successfully!');
+                    } else {
+                        // Handle error scenario
+                        alert('Error adding note.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle any errors that occur during the request
+                    alert('Error adding note: ' + error);
+                }
+            });
         });
     });
+
 </script>

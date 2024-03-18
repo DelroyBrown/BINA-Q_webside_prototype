@@ -1,6 +1,12 @@
 # forms.py
 from django import forms
-from .models import HealthcareWorker, Department, Role, Organisation
+from .models import (
+    HealthcareWorker,
+    Department,
+    Role,
+    Organisation,
+    HealthcareWorkerPersonalNotes,
+)
 
 
 class OrganisationForm(forms.ModelForm):
@@ -34,3 +40,9 @@ class HealthcareWorkerForm(forms.ModelForm):
             "access_level",
             "ods_code",
         ]
+
+
+class HealthcareWorkerPersonalNoteForm(forms.ModelForm):
+    class Meta:
+        model = HealthcareWorkerPersonalNotes
+        fields = ["note_text"]

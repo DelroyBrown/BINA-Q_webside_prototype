@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
 from BINA_departments.models import Department
 from BINA_organisations.models import Organisation
 from BINA_roles.models import Role
@@ -38,8 +39,21 @@ class HealthcareWorker(models.Model):
     )
     bina_q_id = models.CharField(max_length=50, blank=True, unique=True)
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="healthcare_worker", default=''
+        User, on_delete=models.CASCADE, related_name="healthcare_worker", default=""
     )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.department}"
+
+
+class HealthcareWorkerPersonalNotes(models.Model):
+    healthcare_worker = models.ForeignKey(
+        HealthcareWorker,
+        on_delete=models.CASCADE,
+        related_name="notes",
+    )
+    note_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Note for {self.healthcare_worker.first_name} {self.healthcare_worker.last_name} on {self.created_at.strftime('%Y-%m-%d')}"

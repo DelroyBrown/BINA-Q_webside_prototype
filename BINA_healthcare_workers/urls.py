@@ -2,7 +2,7 @@ from .views import (
     healthcare_worker_signup,
     user_registered_email_sent,
     healthcare_user_login,
-    healthcare_user_profile,
+    healthcare_user_profile, add_note
 )
 from django.urls import path
 
@@ -15,5 +15,5 @@ urlpatterns = [
     path("user-registered/", user_registered_email_sent, name="user-registered"),
     path("login/", healthcare_user_login, name="healthcare-user-login"),
     path("profile/", healthcare_user_profile, name="healthcare-user-profile"),
-    # ... other url patterns
+    path('add-note/', add_note, name='add_note'),
 ]

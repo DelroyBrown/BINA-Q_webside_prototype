@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import HealthcareWorker
+from .models import HealthcareWorker, HealthcareWorkerPersonalNotes
+
+admin.site.register(HealthcareWorkerPersonalNotes)
+
+
 
 class HealthcareWorkerAdmin(admin.ModelAdmin):
     list_display = [
