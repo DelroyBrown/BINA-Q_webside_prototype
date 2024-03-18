@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% include 'healthcare_worker_profile/includes/css_links.html' %}
+{% include 'healthcare_worker_profile/includes/javascript_links.html' %}
+
+
+<!--*******************
+        Preloader start
+    ********************-->
+<div id="preloader">
+	<div class="sk-three-bounce">
+		<div class="sk-child sk-bounce1"></div>
+		<div class="sk-child sk-bounce2"></div>
+		<div class="sk-child sk-bounce3"></div>
+	</div>
+</div>
+<!--*******************
+        Preloader end
+    ********************-->
+
+<!--**********************************
+        Main wrapper start
+    ***********************************-->
+<div id="main-wrapper">
+
+	<!-- NAV HEADER -->
+	{% include 'healthcare_worker_profile/includes/hw_profile_nav_header.html' %}
+	<!-- CHAT BOX -->
+	{% include 'healthcare_worker_profile/includes/hw_profile_chat.html' %}
+	<!-- MAIN HEADER -->
+	{% include 'healthcare_worker_profile/includes/hw_profile_main_header.html' %}
+	<!-- SIDEBAR -->
+	{% include 'healthcare_worker_profile/includes/hw_profile_sidebar.html' %}
+
+
+	<!--**********************************
+            Content body start
+        ***********************************-->
+	<div class="content-body">
+		<!-- row -->
+		<div class="container-fluid">
+			<div class="d-md-flex align-items-center">
+				<div class="ms-auto mb-3">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+                                <div class="col-xl-4 col-xxl-6 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header border-0 pb-0">
+                                            <h4 class="card-title">Timeline</h4>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll my-4 px-4 height370">
+                                                <ul class="timeline">
+                                                    <li>
+                                                        <div class="timeline-badge primary"></div>
+                                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                            <span>10 minutes ago</span>
+                                                            <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge info">
+                                                        </div>
+                                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                            <span>20 minutes ago</span>
+                                                            <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
+                                                            <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge danger">
+                                                        </div>
+                                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                            <span>30 minutes ago</span>
+                                                            <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge success">
+                                                        </div>
+                                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                            <span>15 minutes ago</span>
+                                                            <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge warning">
+                                                        </div>
+                                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                            <span>20 minutes ago</span>
+                                                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="timeline-badge dark">
+                                                        </div>
+                                                        <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                            <span>20 minutes ago</span>
+                                                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+
+
+
+{% endblock %}

@@ -198,4 +198,4 @@ def add_note(request):
 
 
 def healthcare_worker_notes(request):
-    return render(request, "healthcare_worker_notes/healthcare_worker_notes.html")
+    return render(request, "healthcare_worker_saved_notes/healthcare_worker_saved_notes.html")
