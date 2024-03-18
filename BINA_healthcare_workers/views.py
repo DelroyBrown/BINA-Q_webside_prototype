@@ -5,9 +5,10 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from BINA_organisations.models import Organisation
 from django.contrib.auth.decorators import login_required
 from .models import HealthcareWorker, HealthcareWorkerPersonalNotes
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import (
     HealthcareWorkerForm,
@@ -42,12 +43,18 @@ def healthcare_worker_signup(request):
             and role_form.is_valid()
             and organisation_form.is_valid()
         ):
+            # Before creating a new organisation, check if it already exists
+            org_name = organisation_form.cleaned_data["organisation_name"]
+            organisation, created = Organisation.objects.get_or_create(
+                organisation_name=org_name
+            )
 
-            organisation = organisation_form.save()
             department = department_form.save(commit=False)
             department.organisation = organisation
             department.save()
+
             role = role_form.save()
+
             worker = worker_form.save(commit=False)
             worker.department = department
             worker.role = role
@@ -90,9 +97,7 @@ def healthcare_worker_signup(request):
                 "your_email@example.com",
                 [worker.work_email],
             )
-
             return redirect("BINA_healthcare_workers:user-registered")
-
     else:
         worker_form = HealthcareWorkerForm(prefix="worker")
         department_form = DepartmentForm(prefix="dept")
@@ -198,4 +203,14 @@ def add_note(request):
 
 
 def healthcare_worker_notes(request):
-    return render(request, "healthcare_worker_saved_notes/healthcare_worker_saved_notes.html")
+    return render(
+        request, "healthcare_worker_saved_notes/healthcare_worker_saved_notes.html"
+    )
+
+
+from django.contrib.auth import logout
+
+
+def healthcare_user_logout(request):
+    logout(request)
+    return redirect("BINA_healthcare_workers:healthcare-user-login")
