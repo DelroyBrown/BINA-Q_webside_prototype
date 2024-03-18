@@ -147,20 +147,27 @@ def healthcare_user_profile(request):
     notes = request.user.healthcare_worker.notes.all()
     notes_form = HealthcareWorkerPersonalNoteForm()
     latest_note = (
-        HealthcareWorkerPersonalNotes.objects.filter(healthcare_worker=request.user.healthcare_worker)
+        HealthcareWorkerPersonalNotes.objects.filter(
+            healthcare_worker=request.user.healthcare_worker
+        )
         .order_by("-created_at")
         .first()
     )
+
+    # Initialize formatted_datetime and urgency_level to None outside the if block
+    formatted_datetime = None
+    urgency_level = None
+
     if latest_note:
         formatted_datetime = date_format(latest_note.created_at, "d F, Y H:i")
-    else:
-        formatted_datetime = None
+        urgency_level = latest_note.note_urgency  # Assign urgency_level here
 
     context = {
         "worker": worker,
         "notes": notes,
         "notes_form": notes_form,
         "latest_note": latest_note,
+        "urgency_level": urgency_level,  # Use the variable in the context
         "formatted_datetime": formatted_datetime,
     }
     return render(
@@ -182,8 +189,13 @@ def add_note(request):
                     "success": True,
                     "note_text": note.note_text,
                     "created_at": formatted_datetime,
+                    "note_urgency": note.get_note_urgency_display(),
                 }
             )
         else:
             return JsonResponse({"error": form.errors}, status=400)
     return JsonResponse({"error": "Bad Request"}, status=400)
+
+
+def healthcare_worker_notes(request):
+    return render(request, "healthcare_worker_notes/healthcare_worker_notes.html")

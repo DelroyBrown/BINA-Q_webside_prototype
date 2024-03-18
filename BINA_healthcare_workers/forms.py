@@ -45,4 +45,4 @@ class HealthcareWorkerForm(forms.ModelForm):
 class HealthcareWorkerPersonalNoteForm(forms.ModelForm):
     class Meta:
         model = HealthcareWorkerPersonalNotes
-        fields = ["note_text"]
+        fields = ["note_text", "note_urgency"]

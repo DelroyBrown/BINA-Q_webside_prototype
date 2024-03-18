@@ -20,11 +20,15 @@
             </a>
         </div>
         <div class="card-body fs-14 font-w300">
-            <small class="fw-bold mb-5">{{ formatted_datetime }}</small><br>
             {% if latest_note %}
+            <small class="fw-bold mb-5">{{ formatted_datetime }}</small><br>
             <p class="mt-2">{{ latest_note.note_text }}</p>
+            <!-- Initial setup for the urgency icons in a muted state, no need for Django template logic here -->
+            <i id="urgency-low" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'LOW' %}text-success{% else %}text-muted{% endif %}"></i>
+            <i id="urgency-medium" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'MEDIUM' %}text-warning{% else %}text-muted{% endif %}"></i>
+            <i id="urgency-high" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'HIGH' %}text-danger{% else %}text-muted{% endif %}"></i>
             {% else %}
-            NO NOTES TO DISPLAY
+            <p class="fw-bold text-center">-- NO NOTES TO DISPLAY --</p>
             {% endif %}
         </div>
     </div>
@@ -47,10 +51,21 @@
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <textarea class="form-control" name="note_text" cols="40" rows="10" required=""
-                                        id="id_note_text"></textarea>
+                                        id="id_note_text">
+                                    </textarea>
+                                    <div class="mt-2">
+                                        <select class="form-select form-control" name="note_urgency"
+                                            id="id_note_urgency" required>
+                                            <option>Urgency Level</option>
+                                            <option value="LOW">Low</option>
+                                            <option value="MEDIUM">Medium</option>
+                                            <option value="HIGH">High</option>
+                                        </select>
+                                    </div>
                                     <button type="submit" class="mt-3 btn btn-primary">+ Add Note</button>
                                     <button type="button" class="mt-3 btn" data-bs-dismiss="modal">Close</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -65,37 +80,37 @@
 
 <script>
     $(document).ready(function () {
-        // When the form is submitted...
         $('form').on('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submit action
-
+            e.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: $(this).attr('action'), // This gets the action URL of the form
-                data: $(this).serialize(), // This serializes the form's elements to a string for submission
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
                 success: function (response) {
-                    // Assuming 'response' includes the latest note text and creation date
+                    console.log(response); // Continue logging to ensure correct data handling
                     if (response.success) {
-                        // Construct the HTML content with the note text and formatted datetime
-                        var updatedContent = '<small class="fw-bold mb-5">' + response.created_at + '</small><br><p class="mt-2">' + response.note_text + '</p>';
+                        // Convert note_urgency to uppercase for comparison
+                        var noteUrgency = response.note_urgency.toUpperCase();
 
-                        // Update the note display area with the new content
-                        $('.card-body.fs-14.font-w300').html(updatedContent);
+                        var updatedContent = `<small class="fw-bold mb-5">${response.created_at}</small><br>` +
+                            `<p class="mt-2">${response.note_text}</p>`;
 
-                        // Optionally, clear the textarea for new input and close the modal
+                        // Compare using the uppercase noteUrgency variable
+                        ['LOW', 'MEDIUM', 'HIGH'].forEach(function (level) {
+                            updatedContent += `<i class="fa-2x fa-solid fa-bell ${noteUrgency === level ? 'text-' + (level === 'LOW' ? 'success' : level === 'MEDIUM' ? 'warning' : 'danger') : 'text-muted'}"></i> `;
+                        });
+
+                        updatedContent += `<p class="mt-2 d-none">Urgency: ${response.note_urgency}</p>`;
+
+                        $('.card-body.fs-14.font-w300').html(updatedContent); // Update the display area with the new content
                         $('#exampleModal').modal('hide');
                         alert('Note added successfully!');
                     } else {
-                        // Handle error scenario
                         alert('Error adding note.');
                     }
                 },
-                error: function (xhr, status, error) {
-                    // Handle any errors that occur during the request
-                    alert('Error adding note: ' + error);
-                }
+
             });
         });
     });
-
 </script>
