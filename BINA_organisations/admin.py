@@ -5,12 +5,7 @@ from .models import Organisation
 class OrganisationAdmin(admin.ModelAdmin):
     list_display = [
         "organisation_name",
-        "building_name_or_number",
-        "street",
-        "town_or_city",
-        "county",
-        "postcode",
-        "country",
+        "ods_code",
         
     ]
 

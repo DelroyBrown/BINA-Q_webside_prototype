@@ -1,5 +1,7 @@
 import random
 import string
+from django.db import IntegrityError, transaction
+from django.contrib import messages
 from django.utils.formats import date_format
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
@@ -16,6 +18,7 @@ from .forms import (
     RoleForm,
     OrganisationForm,
     HealthcareWorkerPersonalNoteForm,
+    OrganisationAddressForm,
 )
 
 
@@ -32,67 +35,82 @@ def generate_temporary_password():
 
 def healthcare_worker_signup(request):
     if request.method == "POST":
-        # Note the addition of request.FILES for handling file uploads.
         worker_form = HealthcareWorkerForm(request.POST, request.FILES, prefix="worker")
         department_form = DepartmentForm(request.POST, prefix="dept")
         role_form = RoleForm(request.POST, prefix="role")
-        organisation_form = OrganisationForm(
-            request.POST, request.FILES, prefix="org"
-        )  # Added request.FILES here
+        address_form = OrganisationAddressForm(request.POST, prefix="address")
 
-        if (
-            worker_form.is_valid()
-            and department_form.is_valid()
-            and role_form.is_valid()
-            and organisation_form.is_valid()
+        if all(
+            [
+                worker_form.is_valid(),
+                department_form.is_valid(),
+                role_form.is_valid(),
+                address_form.is_valid(),
+            ]
         ):
-            # Before creating a new organisation, check if it already exists
-            # Note: If organisation_name is not unique or if you're relying on other fields to check for uniqueness,
-            # you might need to adjust the get_or_create logic.
-            organisation = organisation_form.save()
-
-            department = department_form.save(commit=False)
-            department.organisation = organisation
-            department.save()
-
+            department = department_form.save()
             role = role_form.save()
+            address = address_form.save(commit=False)
+            address.organisation = worker_form.cleaned_data["organisation"]
+            address.save()
 
-            worker = worker_form.save(commit=False)
-            worker.department = department
-            worker.role = role
-            worker.organisation = organisation
-            worker.bina_q_id = generate_bina_q_id(
-                worker.first_name,
-                worker.last_name,
-                organisation.organisation_name,
-                department.department_name,
-            )
+            try:
+                with transaction.atomic():
+                    temp_password = generate_temporary_password()
+                    # Generate BINA-Q ID
+                    bina_q_id = generate_bina_q_id(
+                        worker_form.cleaned_data["first_name"],
+                        worker_form.cleaned_data["last_name"],
+                        worker_form.cleaned_data[
+                            "organisation"
+                        ].organisation_name,  # Make sure you can access organisation name like this
+                        department.department_name,
+                    )
+                    # Create the User instance first with BINA-Q ID as the username
+                    user = User.objects.create_user(
+                        username=bina_q_id,  # Use BINA-Q ID as username
+                        email=worker_form.cleaned_data["work_email"],
+                        password=temp_password,
+                    )
 
-            # Generate a temporary password for the worker
-            temporary_password = generate_temporary_password()
+                    worker = worker_form.save(commit=False)
+                    worker.department = department
+                    worker.role = role
+                    worker.user = (
+                        user  # Associate the User instance with the HealthcareWorker
+                    )
+                    worker.bina_q_id = bina_q_id
+                    worker.save()
 
-            user = User.objects.create_user(
-                username=worker.bina_q_id,
-                email=worker.work_email,
-                password=temporary_password,  # Directly setting the password while creating the user
-            )
-            worker.user = user
-            worker.save()
+                    # Send email logic here
+                    message = f"""New healthcare worker signed up:
+                    Name: {worker.first_name} {worker.last_name}
+                    Department: {department.department_name}
+                    Role: {role.role}
+                    Organisation: {worker.organisation.organisation_name}
+                    Contact Number: {worker_form.cleaned_data.get("contact_number")}
+                    Work Email: {worker_form.cleaned_data.get("work_email")}
+                    BINA-Q ID: {worker.bina_q_id}
+                    Temporary Password: {temp_password}
 
-            message = f"New healthcare worker signed up:\n\nName: {worker.first_name} {worker.last_name}\nDepartment: {department.department_name}\nRole: {role.role}\nOrganisation: {organisation.organisation_name}\nContact Number: {worker.contact_number}\nWork Email: {worker.work_email}\nBINA-Q ID: {worker.bina_q_id}\nTemporary Password: {temporary_password}\nPlease change your password upon first login."
+                    Please change your password upon first login."""
+                    send_mail(
+                        "New Healthcare Worker Signup",
+                        message,
+                        "your_email@example.com",
+                        [worker.work_email],
+                        fail_silently=False,
+                    )
 
-            send_mail(
-                "New Healthcare Worker Signup",
-                message,
-                "your_email@example.com",
-                [worker.work_email],
-            )
-            return redirect("BINA_healthcare_workers:user-registered")
+                    return redirect("BINA_healthcare_workers:user-registered")
+            except IntegrityError as e:
+                # Handle the unique constraint or other database errors
+                messages.error(request, "An error occurred. Please try again.")
     else:
         worker_form = HealthcareWorkerForm(prefix="worker")
         department_form = DepartmentForm(prefix="dept")
         role_form = RoleForm(prefix="role")
-        organisation_form = OrganisationForm(prefix="org")
+        address_form = OrganisationAddressForm(prefix="address")
 
     return render(
         request,
@@ -101,7 +119,7 @@ def healthcare_worker_signup(request):
             "worker_form": worker_form,
             "department_form": department_form,
             "role_form": role_form,
-            "organisation_form": organisation_form,
+            "address_form": address_form,
         },
     )
 
@@ -123,6 +141,10 @@ def healthcare_user_login(request):
             if user is not None:
                 login(request, user)
                 return redirect("BINA_healthcare_workers:healthcare-user-profile")
+            else:
+                messages.error(request, "Invalid BINA-Q ID or password.")
+        else:
+            messages.error(request, "Please correct the errors below.")
     else:
         form = AuthenticationForm()
     return render(

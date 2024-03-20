@@ -1,5 +1,6 @@
 # forms.py
 from django import forms
+from BINA_organisations.models import OrganisationAddress
 from .models import (
     HealthcareWorker,
     Department,
@@ -15,6 +16,12 @@ class OrganisationForm(forms.ModelForm):
         fields = "__all__"
 
 
+class OrganisationAddressForm(forms.ModelForm):
+    class Meta:
+        model = OrganisationAddress
+        exclude = ["organisation"]  # Exclude the organisation field
+
+
 class DepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
@@ -28,6 +35,10 @@ class RoleForm(forms.ModelForm):
 
 
 class HealthcareWorkerForm(forms.ModelForm):
+    organisation = forms.ModelChoiceField(
+        queryset=Organisation.objects.all(), required=True, label="Organisation"
+    )
+
     class Meta:
         model = HealthcareWorker
         fields = [
@@ -39,6 +50,7 @@ class HealthcareWorkerForm(forms.ModelForm):
             "specialises_in",
             "access_level",
             "ods_code",
+            "organisation",
         ]
 
 

@@ -1,0 +1,308 @@
+[
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 1,
+    "fields": {
+      "organisation_name": "Aspen Healthcare",
+      "ods_code": "Aspe2w7rl",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 2,
+    "fields": {
+      "organisation_name": "Benenden Hospital Trust",
+      "ods_code": "Bene3t8qm",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 3,
+    "fields": {
+      "organisation_name": "BMI Healthcare",
+      "ods_code": "BMI5w8nt",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 4,
+    "fields": {
+      "organisation_name": "Bupa Healthcare",
+      "ods_code": "Bupa8f7tz",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 5,
+    "fields": {
+      "organisation_name": "Care UK",
+      "ods_code": "Care5x9zp",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 6,
+    "fields": {
+      "organisation_name": "Circle Health Group",
+      "ods_code": "Circ7d1vx",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 7,
+    "fields": {
+      "organisation_name": "Clementine Churchill Hospital, The",
+      "ods_code": "Clem4x5yq",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 8,
+    "fields": {
+      "organisation_name": "Cromwell Hospital",
+      "ods_code": "Crom4x5yt",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 9,
+    "fields": {
+      "organisation_name": "East Suffolk and North Essex NHS Foundation Trust",
+      "ods_code": "East1a2bc",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 10,
+    "fields": {
+      "organisation_name": "Guy's and St Thomas' NHS Foundation Trust",
+      "ods_code": "Guy'3d4ef",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 11,
+    "fields": {
+      "organisation_name": "HCA Healthcare UK",
+      "ods_code": "HCA2p9ks",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 12,
+    "fields": {
+      "organisation_name": "Hospital of St John & St Elizabeth, The",
+      "ods_code": "Hosp6y1vo",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 13,
+    "fields": {
+      "organisation_name": "Imperial College Healthcare NHS Trust",
+      "ods_code": "Impe5g6hi",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 14,
+    "fields": {
+      "organisation_name": "King Edward VII's Hospital",
+      "ods_code": "King9z6uj",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 15,
+    "fields": {
+      "organisation_name": "Lister Hospital, The",
+      "ods_code": "List5x9zl",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 16,
+    "fields": {
+      "organisation_name": "London Clinic, The",
+      "ods_code": "Lond6y1vh",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 17,
+    "fields": {
+      "organisation_name": "NHS",
+      "ods_code": "NHS6q2xr",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 18,
+    "fields": {
+      "organisation_name": "Nuffield Health",
+      "ods_code": "Nuff3j6ql",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 19,
+    "fields": {
+      "organisation_name": "Nottingham University Hospitals NHS Trust",
+      "ods_code": "Nott7j8kl",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 20,
+    "fields": {
+      "organisation_name": "Oxford University Hospitals NHS Foundation Trust",
+      "ods_code": "Oxfo9m0no",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 21,
+    "fields": {
+      "organisation_name": "Portland Hospital, The",
+      "ods_code": "Port2w8rk",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 22,
+    "fields": {
+      "organisation_name": "Princess Grace Hospital, The",
+      "ods_code": "Prin7z2wp",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 23,
+    "fields": {
+      "organisation_name": "Priory Group, The",
+      "ods_code": "Prio7z2wn",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 24,
+    "fields": {
+      "organisation_name": "Ramsay Health Care UK",
+      "ods_code": "Rams9j6kf",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 25,
+    "fields": {
+      "organisation_name": "Royal Brompton & Harefield NHS Foundation Trust, The",
+      "ods_code": "Roya2w8rs",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 26,
+    "fields": {
+      "organisation_name": "Royal Free London NHS Foundation Trust, The",
+      "ods_code": "Roya3t8qu",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 27,
+    "fields": {
+      "organisation_name": "Royal Marsden NHS Foundation Trust, The",
+      "ods_code": "Roya9z6ur",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 28,
+    "fields": {
+      "organisation_name": "Royal National Orthopaedic Hospital NHS Trust, The",
+      "ods_code": "Roya5x9zt",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 29,
+    "fields": {
+      "organisation_name": "Sheffield Teaching Hospitals NHS Foundation Trust",
+      "ods_code": "Shef2b3cd",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 30,
+    "fields": {
+      "organisation_name": "Spire Healthcare",
+      "ods_code": "Spir4m2zy",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 31,
+    "fields": {
+      "organisation_name": "University College London Hospitals NHS Foundation Trust",
+      "ods_code": "Univ4e5fg",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 32,
+    "fields": {
+      "organisation_name": "University Hospitals Birmingham NHS Foundation Trust",
+      "ods_code": "Univ6h7ij",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 33,
+    "fields": {
+      "organisation_name": "University Hospitals of Leicester NHS Trust",
+      "ods_code": "Univ8k9lm",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 34,
+    "fields": {
+      "organisation_name": "Wellington Hospital, The",
+      "ods_code": "Well3t8qn",
+      "organisation_logo": null
+    }
+  }
+]

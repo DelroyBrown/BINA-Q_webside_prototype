@@ -1,5 +1,16 @@
 {% load static %}
 
+{% for field in address_form %}
+{% if field.errors %}
+<div class="error">
+    <strong>{{ field.label }}:</strong>
+    {% for error in field.errors %}
+    <div>{{ error }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+
 <!-- Step 3 -->
 <div class="tab-pane fade" id="step3">
     <!-- Progress Bar -->
@@ -23,8 +34,15 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_organisation_name">Organisation Name:</label>
-                                <input type="text" id="organisation_organisation_name" name="org-organisation_name" class="form-control"
-                                    required value="{{ organisation_form.organisation_name.value }}">
+                                <select name="worker-organisation" id="organisation_organisation_name">
+                                    {% for org in worker_form.organisation.field.queryset %}
+                                        {% if worker_form.organisation.value == org.pk %}
+                                            <option value="{{ org.pk }}" selected>{{ org.organisation_name }}</option>
+                                        {% else %}
+                                            <option value="{{ org.pk }}">{{ org.organisation_name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select> 
                             </div>
                         </div>
                     </div>
@@ -32,8 +50,9 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_building_name_or_number">Building Name or Number:</label>
-                                <input type="text" id="organisation_building_name_or_number" name="org-building_name_or_number"
-                                    class="form-control" value="{{ organisation_form.building_name_or_number.value }}">
+                                <input type="text" id="organisation_building_name_or_number"
+                                    name="address-building_name_or_number" class="form-control"
+                                    value="{{ organisation_form.building_name_or_number.value }}">
                             </div>
                         </div>
                     </div>
@@ -41,7 +60,7 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_street">Street:</label>
-                                <input type="text" id="organisation_street" name="org-street" class="form-control"
+                                <input type="text" id="organisation_street" name="address-street" class="form-control"
                                     value="{{ organisation_form.street.value }}">
                             </div>
                         </div>
@@ -50,8 +69,8 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_town_or_city">Town/City:</label>
-                                <input type="text" id="organisation_town_or_city" name="org-town_or_city" class="form-control"
-                                    value="{{ organisation_form.town_or_city.value }}">
+                                <input type="text" id="organisation_town_or_city" name="address-town_or_city"
+                                    class="form-control" value="{{ organisation_form.town_or_city.value }}">
                             </div>
                         </div>
                     </div>
@@ -59,7 +78,7 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_postcode">Postcode:</label>
-                                <input type="text" id="organisation_postcode" name="org-postcode" class="form-control"
+                                <input type="text" id="organisation_postcode" name="address-postcode" class="form-control"
                                     value="{{ organisation_form.postcode.value }}">
                             </div>
                         </div>
@@ -68,7 +87,7 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_county">County:</label>
-                                <input type="text" id="organisation_county" name="org-county" class="form-control"
+                                <input type="text" id="organisation_county" name="address-county" class="form-control"
                                     value="{{ organisation_form.county.value }}">
                             </div>
                         </div>
@@ -77,11 +96,14 @@
                         <div class="form-group">
                             <div class="formify-forms__input">
                                 <label for="organisation_country">Country:</label>
-                                <input type="text" id="organisation_country" name="org-country" class="form-control"
+                                <input type="text" id="organisation_country" name="address-country" class="form-control"
                                     value="{{ organisation_form.country.value }}">
                             </div>
                         </div>
                     </div>
+                    
+                    
+                    
                     <div class="col-lg-4 col-md-4">
                         <div class="form-group">
                             <div class="formify-forms__input">
@@ -92,11 +114,12 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12">
-                        
+
                         <div class="">
                             <div class="">
                                 <label for="organisation_ods_code">Organisation Logo:</label>
-                                <input class="form-control" type="file" name="organisation_logo" id="id_organisation_logo" accept="image/*">
+                                <input class="form-control" type="file" name="org-organisation_logo"
+                                    id="id_organisation_logo" accept="image/*">
                             </div>
                         </div>
                     </div>

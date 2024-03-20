@@ -6,7 +6,21 @@
 {% include 'healthcare_worker_signup/includes/javascript_links.html' %}
 
 
+
+
 <div class="body-bg formify-quiz-layout-7">
+    {% for field in worker_form %}
+    {% if field.errors %}
+    <div class="error">
+        <strong>{{ field.label }}:</strong>
+        {% for error in field.errors %}
+        <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
 
 
     <section class="formify-form">
@@ -74,21 +88,22 @@
 
                                     <!-- Form Area -->
                                     <form method="POST" id="multiStepForm"
-                                    class="formify-forms formify-forms__quiz formify-forms__quiz--v6" enctype="multipart/form-data" action="#">
-                                    {% csrf_token %}
+                                        class="formify-forms formify-forms__quiz formify-forms__quiz--v6"
+                                        enctype="multipart/form-data" action="#">
+                                        {% csrf_token %}
                                         <div class="tab-content">
                                             <!-- Step 1: Personal Information -->
                                             {% include 'healthcare_worker_signup/includes/1_person_information.html' %}
-                                            
+
                                             <!-- Step 2 -->
                                             {% include 'healthcare_worker_signup/includes/2_department_information.html' %}
-                                            
-                                            
+
+
                                             <!-- Step 3 -->
                                             {% include 'healthcare_worker_signup/includes/3_organisation_information.html' %}
-                                            
 
-                                         
+
+
                                         </div>
                                     </form>
                                     <!-- End Form Area -->

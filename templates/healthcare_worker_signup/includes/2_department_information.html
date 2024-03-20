@@ -33,6 +33,7 @@
                                 <label for="department_department_type">Department Type:</label>
                                 <select id="department_department_type" name="dept-department_type"
                                     class="form-control">
+                                    <option>--------</option>
                                     {% for value, label in department_form.department_type.field.choices %}
                                     <option value="{{ value }}" {% if department_form.department_type.value == value %}selected{% endif %}>{{ label }}</option>
                                     {% endfor %}

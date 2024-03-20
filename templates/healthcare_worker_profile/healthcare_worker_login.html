@@ -21,6 +21,8 @@
 </style>
 
 <body class="vh-100">
+    
+
 
     <div class="authincation h-100">
         <div class="container h-100">
@@ -69,14 +71,24 @@
                                                 </span>
                                             </small><br>
                                             <label class="form-label">BINA-Q ID:</label>
-                                            <input class="form-control" type="text" name="username" autofocus=""
+                                            <input class="form-control form-control {% if form.username.errors %}is-invalid{% endif %}" type="text" name="username" autofocus=""
                                                 autocapitalize="none" autocomplete="username" maxlength="150"
-                                                required="" id="id_username">
+                                                required id="id_username">
+                                                {% for error in form.username.errors %}
+                                                <div class="invalid-feedback">
+                                                    {{ error }}
+                                                </div>
+                                                {% endfor %}
                                         </div>
                                         <label class="form-label">Password</label>
                                         <div class="mb-3 position-relative">
-                                            <input class="form-control" type="password" name="password"
+                                            <input class="form-control {% if form.password.errors %}is-invalid{% endif %}" type="password" name="password"
                                                 autocomplete="current-password" required="" id="id_password">
+                                                {% for error in form.password.errors %}
+                                                <div class="invalid-feedback">
+                                                    {{ error }}
+                                                </div>
+                                                {% endfor %}
                                             <span class="show-pass eye">
                                                 <i class="fa fa-eye-slash"></i>
                                                 <i class="fa fa-eye"></i>
