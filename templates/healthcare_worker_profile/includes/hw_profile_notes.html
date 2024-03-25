@@ -18,14 +18,19 @@
                     </defs>
                 </svg>
             </a>
+
+
         </div>
         <div class="card-body fs-14 font-w300">
             {% if latest_note %}
             <small class="fw-bold mb-5">{{ formatted_datetime }}</small><br>
             <p class="mt-2">{{ latest_note.note_text }}</p>
-            <i id="urgency-low" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'LOW' %}text-success{% else %}text-muted{% endif %}"></i>
-            <i id="urgency-medium" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'MEDIUM' %}text-warning{% else %}text-muted{% endif %}"></i>
-            <i id="urgency-high" class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'HIGH' %}text-danger{% else %}text-muted{% endif %}"></i>
+            <i id="urgency-low"
+                class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'LOW' %}text-success{% else %}text-muted{% endif %}"></i>
+            <i id="urgency-medium"
+                class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'MEDIUM' %}text-warning{% else %}text-muted{% endif %}"></i>
+            <i id="urgency-high"
+                class="fa-2x fa-solid fa-bell {% if latest_note.note_urgency == 'HIGH' %}text-danger{% else %}text-muted{% endif %}"></i>
             {% else %}
             <p class="fw-bold text-center">-- NO NOTES TO DISPLAY --</p>
             {% endif %}
@@ -48,7 +53,7 @@
                         <div class="basic-form">
                             <form method="post" action="{% url 'BINA_healthcare_workers:add_note' %}">
                                 {% csrf_token %}
-                                
+
                                 <div class="mb-3">
                                     <textarea class="form-control"
                                         placeholder="Write a personal note or reminder here—it'll stay on your dashboard as a constant memo until a new one is added. Set its priority level below."
@@ -113,5 +118,6 @@
 
             });
         });
+
     });
 </script>

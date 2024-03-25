@@ -16,6 +16,7 @@ class HealthcareWorkerAdmin(admin.ModelAdmin):
         'contact_number',
         'access_level',
         'bina_q_id',
+        'temp_password_used',
     ]
 
 admin.site.register(HealthcareWorker, HealthcareWorkerAdmin)

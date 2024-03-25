@@ -1,0 +1,998 @@
+[
+    {
+        "code": "ACP",
+        "name": "Advanced Clinical Practitioner"
+    },
+    {
+        "code": "AHO",
+        "name": "Allied Health Officer"
+    },
+    {
+        "code": "AHP",
+        "name": "Allied Health Professional"
+    },
+    {
+        "code": "AMB",
+        "name": "Ambulance Care Assistant"
+    },
+    {
+        "code": "AMT",
+        "name": "Ambulance Technician"
+    },
+    {
+        "code": "ANP",
+        "name": "Advanced Nurse Practitioner"
+    },
+    {
+        "code": "ART",
+        "name": "Art Therapist"
+    },
+    {
+        "code": "ASW",
+        "name": "Approved Social Worker"
+    },
+    {
+        "code": "AUD",
+        "name": "Audiologist"
+    },
+    {
+        "code": "BMS",
+        "name": "Biomedical Scientist"
+    },
+    {
+        "code": "CCP",
+        "name": "Critical Care Practitioner"
+    },
+    {
+        "code": "CFH",
+        "name": "Child & Family Health Nurse"
+    },
+    {
+        "code": "CHN",
+        "name": "Community Health Nurse"
+    },
+    {
+        "code": "CHW",
+        "name": "Community Healthcare Worker"
+    },
+    {
+        "code": "CLD",
+        "name": "Counsellor"
+    },
+    {
+        "code": "CLN",
+        "name": "Clinic Nurse"
+    },
+    {
+        "code": "CLS",
+        "name": "Clinical Scientist"
+    },
+    {
+        "code": "CNA",
+        "name": "Certified Nursing Assistant"
+    },
+    {
+        "code": "CNS",
+        "name": "Clinical Nurse Specialist"
+    },
+    {
+        "code": "CON",
+        "name": "Consultant"
+    },
+    {
+        "code": "COU",
+        "name": "Counselor"
+    },
+    {
+        "code": "CPN",
+        "name": "Community Psychiatric Nurse"
+    },
+    {
+        "code": "CPS",
+        "name": "Child Psychologist"
+    },
+    {
+        "code": "CRC",
+        "name": "Cardiac Rehabilitation Coordinator"
+    },
+    {
+        "code": "CRN",
+        "name": "Cancer Research Nurse"
+    },
+    {
+        "code": "CSW",
+        "name": "Care Support Worker"
+    },
+    {
+        "code": "CTH",
+        "name": "Chiropodist/Podiatrist"
+    },
+    {
+        "code": "DBN",
+        "name": "District Nurse"
+    },
+    {
+        "code": "DEN",
+        "name": "Dentist"
+    },
+    {
+        "code": "DER",
+        "name": "Dermatologist"
+    },
+    {
+        "code": "DERN",
+        "name": "Dermatology Nurse"
+    },
+    {
+        "code": "DERT",
+        "name": "Dermatology Technician"
+    },
+    {
+        "code": "DIE",
+        "name": "Dietitian"
+    },
+    {
+        "code": "DMU",
+        "name": "Diagnostic Radiographer"
+    },
+    {
+        "code": "DOC",
+        "name": "Doctor"
+    },
+    {
+        "code": "DON",
+        "name": "Director of Nursing"
+    },
+    {
+        "code": "DRE",
+        "name": "Dental Receptionist"
+    },
+    {
+        "code": "DRG",
+        "name": "Dental Hygienist"
+    },
+    {
+        "code": "DRN",
+        "name": "Dental Nurse"
+    },
+    {
+        "code": "DRT",
+        "name": "Dental Therapist"
+    },
+    {
+        "code": "DSN",
+        "name": "Diabetes Specialist Nurse"
+    },
+    {
+        "code": "DTS",
+        "name": "Dietetic Support Worker"
+    },
+    {
+        "code": "ECP",
+        "name": "Emergency Care Practitioner"
+    },
+    {
+        "code": "EMT",
+        "name": "Emergency Medical Technician"
+    },
+    {
+        "code": "END",
+        "name": "Endoscopist"
+    },
+    {
+        "code": "EPR",
+        "name": "Emergency Preparedness Responder"
+    },
+    {
+        "code": "FPH",
+        "name": "Foundation Programme Trainee"
+    },
+    {
+        "code": "GEN",
+        "name": "Genetic Counselor"
+    },
+    {
+        "code": "GSW",
+        "name": "General Support Worker"
+    },
+    {
+        "code": "HCA",
+        "name": "Healthcare Assistant"
+    },
+    {
+        "code": "HCS",
+        "name": "Healthcare Scientist"
+    },
+    {
+        "code": "HEA",
+        "name": "Health Advocate"
+    },
+    {
+        "code": "HIT",
+        "name": "Health Information Technician"
+    },
+    {
+        "code": "HKP",
+        "name": "Housekeeping"
+    },
+    {
+        "code": "HOD",
+        "name": "Head of Department"
+    },
+    {
+        "code": "HPH",
+        "name": "Hospital Pharmacist"
+    },
+    {
+        "code": "HRA",
+        "name": "Human Resources Advisor"
+    },
+    {
+        "code": "HSC",
+        "name": "Healthcare Chaplain"
+    },
+    {
+        "code": "HSM",
+        "name": "Health Services Manager"
+    },
+    {
+        "code": "HSW",
+        "name": "Hospice Support Worker"
+    },
+    {
+        "code": "HTC",
+        "name": "Healthcare Technician"
+    },
+    {
+        "code": "HTH",
+        "name": "Health Trainer"
+    },
+    {
+        "code": "HVA",
+        "name": "Health Visitor Assistant"
+    },
+    {
+        "code": "HVI",
+        "name": "Health Visitor"
+    },
+    {
+        "code": "IPC",
+        "name": "Infection Prevention & Control Nurse"
+    },
+    {
+        "code": "LPH",
+        "name": "Lead Public Health Practitioner"
+    },
+    {
+        "code": "MAC",
+        "name": "Medical Administrator"
+    },
+    {
+        "code": "MAA",
+        "name": "Medical Administrative Assistant"
+    },
+    {
+        "code": "MDA",
+        "name": "Medical Dental Administrator"
+    },
+    {
+        "code": "MDI",
+        "name": "Medical Illustrator"
+    },
+    {
+        "code": "MDP",
+        "name": "Medical Photographer"
+    },
+    {
+        "code": "MDR",
+        "name": "Medical Records Clerk"
+    },
+    {
+        "code": "MHN",
+        "name": "Mental Health Nurse"
+    },
+    {
+        "code": "MLT",
+        "name": "Medical Laboratory Technician"
+    },
+    {
+        "code": "MMS",
+        "name": "Maxillofacial Surgery"
+    },
+    {
+        "code": "MOA",
+        "name": "Medical Office Assistant"
+    },
+    {
+        "code": "MPH",
+        "name": "Master of Public Health"
+    },
+    {
+        "code": "MRA",
+        "name": "Medical Records Analyst"
+    },
+    {
+        "code": "MRD",
+        "name": "Medical Records Director"
+    },
+    {
+        "code": "MRI",
+        "name": "MRI Radiographer"
+    },
+    {
+        "code": "MS",
+        "name": "Medical Secretary"
+    },
+    {
+        "code": "MSW",
+        "name": "Medical Social Worker"
+    },
+    {
+        "code": "MT",
+        "name": "Medical Technologist"
+    },
+    {
+        "code": "MTH",
+        "name": "Music Therapist"
+    },
+    {
+        "code": "NAN",
+        "name": "Nursing Associate"
+    },
+    {
+        "code": "NEU",
+        "name": "Neurologist"
+    },
+    {
+        "code": "NEUR",
+        "name": "Neurology Nurse"
+    },
+    {
+        "code": "NEUS",
+        "name": "Neurosurgical Practitioner"
+    },
+    {
+        "code": "NEUT",
+        "name": "Neurological Therapist"
+    },
+    {
+        "code": "NEUS",
+        "name": "Neuroscience Technician"
+    },
+    {
+        "code": "NEUR",
+        "name": "Neurology Registrar"
+    },
+    {
+        "code": "NEUP",
+        "name": "Neuropsychologist"
+    },
+    {
+        "code": "NMP",
+        "name": "Non-Medical Prescriber"
+    },
+    {
+        "code": "NOF",
+        "name": "Nursing Officer"
+    },
+    {
+        "code": "NP",
+        "name": "Nurse Practitioner"
+    },
+    {
+        "code": "NPM",
+        "name": "Nurse Practice Manager"
+    },
+    {
+        "code": "NRX",
+        "name": "Nuclear Radiology Technician"
+    },
+    {
+        "code": "NSN",
+        "name": "Neonatal Nurse"
+    },
+    {
+        "code": "NSS",
+        "name": "Nursing Support Staff"
+    },
+    {
+        "code": "NUA",
+        "name": "Nursing Auxiliary"
+    },
+    {
+        "code": "NUT",
+        "name": "Nutritionist"
+    },
+    {
+        "code": "ODA",
+        "name": "Operating Department Assistant"
+    },
+    {
+        "code": "ODR",
+        "name": "Orthodontic Therapist"
+    },
+    {
+        "code": "ODP",
+        "name": "Operating Department Practitioner"
+    },
+    {
+        "code": "OMS",
+        "name": "Oral and Maxillofacial Surgeon"
+    },
+    {
+        "code": "ONC",
+        "name": "Oncologist"
+    },
+    {
+        "code": "ONR",
+        "name": "Oncology Nurse"
+    },
+    {
+        "code": "OPM",
+        "name": "Ophthalmic Practitioner"
+    },
+    {
+        "code": "OPR",
+        "name": "Optometrist"
+    },
+    {
+        "code": "ORT",
+        "name": "Orthoptist"
+    },
+    {
+        "code": "OSM",
+        "name": "Osteomyologist"
+    },
+    {
+        "code": "OTA",
+        "name": "Occupational Therapy Assistant"
+    },
+    {
+        "code": "OTH",
+        "name": "Occupational Therapist"
+    },
+    {
+        "code": "OTO",
+        "name": "Otorhinolaryngologist"
+    },
+    {
+        "code": "PAR",
+        "name": "Paramedic"
+    },
+    {
+        "code": "PATH",
+        "name": "Pathologist"
+    },
+    {
+        "code": "PCA",
+        "name": "Patient Care Assistant"
+    },
+    {
+        "code": "PCT",
+        "name": "Pharmacy Technician"
+    },
+    {
+        "code": "PD",
+        "name": "Practice Development Nurse"
+    },
+    {
+        "code": "PFH",
+        "name": "Public Health Practitioner"
+    },
+    {
+        "code": "PHD",
+        "name": "Podiatrist"
+    },
+    {
+        "code": "PHR",
+        "name": "Pharmacist"
+    },
+    {
+        "code": "PHY",
+        "name": "Physicist"
+    },
+    {
+        "code": "PLN",
+        "name": "Palliative Care Nurse"
+    },
+    {
+        "code": "PMW",
+        "name": "Pregnancy Midwife"
+    },
+    {
+        "code": "PNR",
+        "name": "Practice Nurse"
+    },
+    {
+        "code": "POD",
+        "name": "Podiatrist"
+    },
+    {
+        "code": "POR",
+        "name": "Perioperative Nurse"
+    },
+    {
+        "code": "PRN",
+        "name": "Prison Nurse"
+    },
+    {
+        "code": "PSW",
+        "name": "Psychiatric Social Worker"
+    },
+    {
+        "code": "PSY",
+        "name": "Psychiatrist"
+    },
+    {
+        "code": "PSYC",
+        "name": "Clinical Psychologist"
+    },
+    {
+        "code": "PSYT",
+        "name": "Psychotherapist"
+    },
+    {
+        "code": "PTH",
+        "name": "Phlebotomist"
+    },
+    {
+        "code": "PTR",
+        "name": "Physiotherapist"
+    },
+    {
+        "code": "PTS",
+        "name": "Physiotherapy Support Worker"
+    },
+    {
+        "code": "RAD",
+        "name": "Radiologist"
+    },
+    {
+        "code": "RAN",
+        "name": "Radiology Nurse"
+    },
+    {
+        "code": "RCP",
+        "name": "Respiratory Care Practitioner"
+    },
+    {
+        "code": "RD",
+        "name": "Registered Dietitian"
+    },
+    {
+        "code": "RDG",
+        "name": "Radiographer"
+    },
+    {
+        "code": "RDT",
+        "name": "Radiation Therapist"
+    },
+    {
+        "code": "RGN",
+        "name": "Registered General Nurse"
+    },
+    {
+        "code": "RMN",
+        "name": "Registered Mental Health Nurse"
+    },
+    {
+        "code": "RMT",
+        "name": "Rehab/Mobility Technician"
+    },
+    {
+        "code": "RNT",
+        "name": "Renal Nurse"
+    },
+    {
+        "code": "RPH",
+        "name": "Radiation Protection Officer"
+    },
+    {
+        "code": "RPT",
+        "name": "Respiratory Therapist"
+    },
+    {
+        "code": "RRT",
+        "name": "Registered Respiratory Therapist"
+    },
+    {
+        "code": "RSW",
+        "name": "Rehabilitation Support Worker"
+    },
+    {
+        "code": "RTH",
+        "name": "Recreational Therapist"
+    },
+    {
+        "code": "RTT",
+        "name": "Radiotherapy Technician"
+    },
+    {
+        "code": "SA",
+        "name": "Speech and Language Therapist"
+    },
+    {
+        "code": "SE",
+        "name": "Sexual Health Educator"
+    },
+    {
+        "code": "SIM",
+        "name": "Simulation Technician"
+    },
+    {
+        "code": "SN",
+        "name": "School Nurse"
+    },
+    {
+        "code": "SOC",
+        "name": "Surgical Oncologist"
+    },
+    {
+        "code": "SPH",
+        "name": "Specialist Pharmacist"
+    },
+    {
+        "code": "SPR",
+        "name": "Specialist Registrar"
+    },
+    {
+        "code": "SRN",
+        "name": "Senior Registered Nurse"
+    },
+    {
+        "code": "SSN",
+        "name": "Substance Misuse Nurse"
+    },
+    {
+        "code": "ST",
+        "name": "Sterile Services Technician"
+    },
+    {
+        "code": "STC",
+        "name": "Stoma Care Nurse"
+    },
+    {
+        "code": "SUR",
+        "name": "Surgeon"
+    },
+    {
+        "code": "SVC",
+        "name": "Service Coordinator"
+    },
+    {
+        "code": "SW",
+        "name": "Social Worker"
+    },
+    {
+        "code": "TDS",
+        "name": "Tissue Donation Specialist"
+    },
+    {
+        "code": "TEC",
+        "name": "Technical Instructor"
+    },
+    {
+        "code": "THC",
+        "name": "Therapeutic Care Worker"
+    },
+    {
+        "code": "TO",
+        "name": "Toxicologist"
+    },
+    {
+        "code": "TPM",
+        "name": "Transplant Medicine Specialist"
+    },
+    {
+        "code": "TSS",
+        "name": "Trauma Support Specialist"
+    },
+    {
+        "code": "URO",
+        "name": "Urologist"
+    },
+    {
+        "code": "URN",
+        "name": "Urology Nurse"
+    },
+    {
+        "code": "VA",
+        "name": "Vascular Access Specialist"
+    },
+    {
+        "code": "VET",
+        "name": "Veterinarian (for roles in human healthcare related animal therapy)"
+    },
+    {
+        "code": "VIR",
+        "name": "Vascular Interventional Radiographer"
+    },
+    {
+        "code": "VIS",
+        "name": "Vision Rehabilitation Specialist"
+    },
+    {
+        "code": "VM",
+        "name": "Volunteer Manager"
+    },
+    {
+        "code": "VSN",
+        "name": "Visiting Nurse"
+    },
+    {
+        "code": "WHP",
+        "name": "Workplace Health Practitioner"
+    },
+    {
+        "code": "WM",
+        "name": "Ward Manager"
+    },
+    {
+        "code": "WOP",
+        "name": "Wound Care Practitioner"
+    },
+    {
+        "code": "WPH",
+        "name": "Women's Health Physiotherapist"
+    },
+    {
+        "code": "XRT",
+        "name": "X-Ray Technologist"
+    },
+    {
+        "code": "YOT",
+        "name": "Youth Offending Team Nurse"
+    },
+    {
+        "code": "ZTM",
+        "name": "Zoonotic Disease Specialist"
+    },
+    {
+        "code": "ACC",
+        "name": "Acupuncturist"
+    },
+    {
+        "code": "BRT",
+        "name": "Breastfeeding Support Consultant"
+    },
+    {
+        "code": "CCG",
+        "name": "Clinical Genetics Counselor"
+    },
+    {
+        "code": "DPC",
+        "name": "Dental Prosthetic Technician"
+    },
+    {
+        "code": "ELC",
+        "name": "Elderly Care Specialist"
+    },
+    {
+        "code": "FNT",
+        "name": "Forensic Mental Health Nurse"
+    },
+    {
+        "code": "GDC",
+        "name": "Genomic Data Counsellor"
+    },
+    {
+        "code": "ENDO",
+        "name": "Endocrinologist"
+    },
+    {
+        "code": "PEDMD",
+        "name": "Pediatrician"
+    },
+    {
+        "code": "PEDNS",
+        "name": "Pediatric Nurse Specialist"
+    },
+    {
+        "code": "HEMO",
+        "name": "Hematologist"
+    },
+    {
+        "code": "HEMOTEC",
+        "name": "Hematology Technician"
+    },
+    {
+        "code": "ANES",
+        "name": "Anesthesiologist"
+    },
+    {
+        "code": "ANESTEC",
+        "name": "Anesthesia Technician"
+    },
+    {
+        "code": "GERIMED",
+        "name": "Geriatrician"
+    },
+    {
+        "code": "GERINUR",
+        "name": "Geriatric Nurse"
+    },
+    {
+        "code": "BIOMEDENG",
+        "name": "Biomedical Engineer"
+    },
+    {
+        "code": "CLINENG",
+        "name": "Clinical Engineer"
+    },
+    {
+        "code": "PEDSUR",
+        "name": "Pediatric Surgeon"
+    },
+    {
+        "code": "PEDONC",
+        "name": "Pediatric Oncologist"
+    },
+    {
+        "code": "PEDHEM",
+        "name": "Pediatric Hematologist"
+    },
+    {
+        "code": "PEDEND",
+        "name": "Pediatric Endocrinologist"
+    },
+    {
+        "code": "TECHSUP",
+        "name": "Technical Support Specialist"
+    },
+    {
+        "code": "HEALTHIT",
+        "name": "Healthcare IT Specialist"
+    },
+    {
+        "code": "MEDDEVREP",
+        "name": "Medical Device Representative"
+    },
+    {
+        "code": "EHRSPC",
+        "name": "Electronic Health Records Specialist"
+    },
+    {
+        "code": "HITCONS",
+        "name": "Health Information Technology Consultant"
+    },
+    {
+        "code": "MOBHEALTH",
+        "name": "Mobile Health Developer"
+    },
+    {
+        "code": "CLININFSYS",
+        "name": "Clinical Informatics Specialist"
+    },
+    {
+        "code": "DATANALH",
+        "name": "Health Data Analyst"
+    },
+    {
+        "code": "PATSAFETY",
+        "name": "Patient Safety Officer"
+    },
+    {
+        "code": "QUALMAN",
+        "name": "Quality Manager"
+    },
+    {
+        "code": "RISKMAN",
+        "name": "Risk Manager"
+    },
+    {
+        "code": "INFECTCONT",
+        "name": "Infection Control Specialist"
+    },
+    {
+        "code": "CLINRESEARCH",
+        "name": "Clinical Researcher"
+    },
+    {
+        "code": "GENCOUNSEL",
+        "name": "Genetic Counselor"
+    },
+    {
+        "code": "PHARMTECH",
+        "name": "Pharmacy Technician"
+    },
+    {
+        "code": "PHARMINF",
+        "name": "Pharmacy Informatics Specialist"
+    },
+    {
+        "code": "TOXICOL",
+        "name": "Toxicologist"
+    },
+    {
+        "code": "OCCUPMED",
+        "name": "Occupational Medicine Specialist"
+    },
+    {
+        "code": "PULMONOL",
+        "name": "Pulmonologist"
+    },
+    {
+        "code": "CARDIOL",
+        "name": "Cardiologist"
+    },
+    {
+        "code": "NEUROLOG",
+        "name": "Neurologist"
+    },
+    {
+        "code": "ORTHOPED",
+        "name": "Orthopedist"
+    },
+    {
+        "code": "RHEUMATOL",
+        "name": "Rheumatologist"
+    },
+    {
+        "code": "ONCOLOG",
+        "name": "Oncologist"
+    },
+    {
+        "code": "NEPHROL",
+        "name": "Nephrologist"
+    },
+    {
+        "code": "UROLOG",
+        "name": "Urologist"
+    },
+    {
+        "code": "DERMATOL",
+        "name": "Dermatologist"
+    },
+    {
+        "code": "PSYCHIATR",
+        "name": "Psychiatrist"
+    },
+    {
+        "code": "PSYCHOLOG",
+        "name": "Psychologist"
+    },
+    {
+        "code": "SOCWORK",
+        "name": "Social Worker"
+    },
+    {
+        "code": "COUNSEL",
+        "name": "Counselor"
+    },
+    {
+        "code": "DIETITIAN",
+        "name": "Dietitian"
+    },
+    {
+        "code": "NUTRITIONIST",
+        "name": "Nutritionist"
+    },
+    {
+        "code": "OCCUPTHER",
+        "name": "Occupational Therapist"
+    },
+    {
+        "code": "PHYSTHER",
+        "name": "Physical Therapist"
+    },
+    {
+        "code": "SPEECHTHER",
+        "name": "Speech Therapist"
+    },
+    {
+        "code": "GERIPSYCH",
+        "name": "Geriatric Psychiatrist"
+    },
+    {
+        "code": "MEDGEN",
+        "name": "Medical Geneticist"
+    },
+    {
+        "code": "IMMUNOL",
+        "name": "Immunologist"
+    },
+    {
+        "code": "INFECTDISEASE",
+        "name": "Infectious Disease Specialist"
+    }
+]

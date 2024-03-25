@@ -1,5 +1,7 @@
 # forms.py
 from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 from BINA_organisations.models import OrganisationAddress
 from .models import (
     HealthcareWorker,
@@ -58,3 +60,9 @@ class HealthcareWorkerPersonalNoteForm(forms.ModelForm):
     class Meta:
         model = HealthcareWorkerPersonalNotes
         fields = ["note_text", "note_urgency"]
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    class Meta:
+        model = User
+        fields = ("old_password", "new_password1", "new_password2")

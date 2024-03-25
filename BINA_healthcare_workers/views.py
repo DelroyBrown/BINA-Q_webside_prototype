@@ -1,16 +1,22 @@
+# BINA_healthcare_workers/views.py
 import random
 import string
+import logging
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from BINA_healthcare_workers.utils.utils import Utils
 from django.db import IntegrityError, transaction
 from django.contrib import messages
 from django.utils.formats import date_format
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
+from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail, EmailMessage
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from BINA_organisations.models import Organisation
 from django.contrib.auth.decorators import login_required
 from .models import HealthcareWorker, HealthcareWorkerPersonalNotes
-from django.contrib.auth import authenticate, login, logout
+from BINA_organisations.models import ORGANISATION_COUNTRIES
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import (
     HealthcareWorkerForm,
@@ -19,18 +25,10 @@ from .forms import (
     OrganisationForm,
     HealthcareWorkerPersonalNoteForm,
     OrganisationAddressForm,
+    CustomPasswordChangeForm,
 )
 
-
-def generate_bina_q_id(first_name, last_name, organisation_name, department_name):
-    random_part = "".join(random.choices(string.ascii_uppercase + string.digits, k=6))
-    bina_q_id = f"{first_name[:2].upper()}{last_name[:2].upper()}{organisation_name[:3].upper()}{department_name[:3].upper()}-{random_part}"
-    return bina_q_id
-
-
-def generate_temporary_password():
-    characters = string.ascii_letters + string.digits + string.punctuation
-    return "".join(random.choice(characters) for i in range(10))
+logger = logging.getLogger(__name__)
 
 
 def healthcare_worker_signup(request):
@@ -48,63 +46,62 @@ def healthcare_worker_signup(request):
                 address_form.is_valid(),
             ]
         ):
-            department = department_form.save()
-            role = role_form.save()
-            address = address_form.save(commit=False)
-            address.organisation = worker_form.cleaned_data["organisation"]
-            address.save()
-
             try:
                 with transaction.atomic():
-                    temp_password = generate_temporary_password()
-                    # Generate BINA-Q ID
-                    bina_q_id = generate_bina_q_id(
+                    # Save department, role, and address first
+                    department = department_form.save()
+                    role = role_form.save()
+                    address = address_form.save(commit=False)
+                    address.organisation = worker_form.cleaned_data["organisation"]
+                    address.save()
+
+                    # Generate temporary password and BINA-Q ID
+                    temp_password = Utils.generate_temporary_password()
+                    bina_q_id = Utils.generate_bina_q_id(
                         worker_form.cleaned_data["first_name"],
                         worker_form.cleaned_data["last_name"],
-                        worker_form.cleaned_data[
-                            "organisation"
-                        ].organisation_name,  # Make sure you can access organisation name like this
+                        worker_form.cleaned_data["organisation"].organisation_name,
                         department.department_name,
                     )
-                    # Create the User instance first with BINA-Q ID as the username
+
+                    # Create the User instance
                     user = User.objects.create_user(
-                        username=bina_q_id,  # Use BINA-Q ID as username
+                        username=bina_q_id,
                         email=worker_form.cleaned_data["work_email"],
                         password=temp_password,
                     )
 
+                    # Now, save the HealthcareWorker instance
                     worker = worker_form.save(commit=False)
                     worker.department = department
                     worker.role = role
-                    worker.user = (
-                        user  # Associate the User instance with the HealthcareWorker
-                    )
+                    worker.user = user
                     worker.bina_q_id = bina_q_id
+                    worker.temp_password_used = False  # Ensure it's set correctly here
                     worker.save()
 
-                    # Send email logic here
-                    message = f"""New healthcare worker signed up:
-                    Name: {worker.first_name} {worker.last_name}
-                    Department: {department.department_name}
-                    Role: {role.role}
-                    Organisation: {worker.organisation.organisation_name}
-                    Contact Number: {worker_form.cleaned_data.get("contact_number")}
-                    Work Email: {worker_form.cleaned_data.get("work_email")}
-                    BINA-Q ID: {worker.bina_q_id}
-                    Temporary Password: {temp_password}
-
-                    Please change your password upon first login."""
-                    send_mail(
+                    # Email sending logic
+                    html_content = render_to_string(
+                        "healthcare_worker_signup/emails/user_signedup_email.html",
+                        {
+                            "worker": worker,
+                            "department": department,
+                            "role": role,
+                            "temp_password": temp_password,
+                        },
+                    )
+                    text_content = strip_tags(html_content)
+                    email = EmailMessage(
                         "New Healthcare Worker Signup",
-                        message,
+                        html_content,
                         "your_email@example.com",
                         [worker.work_email],
-                        fail_silently=False,
                     )
+                    email.content_subtype = "html"
+                    email.send()
 
                     return redirect("BINA_healthcare_workers:user-registered")
             except IntegrityError as e:
-                # Handle the unique constraint or other database errors
                 messages.error(request, "An error occurred. Please try again.")
     else:
         worker_form = HealthcareWorkerForm(prefix="worker")
@@ -120,6 +117,7 @@ def healthcare_worker_signup(request):
             "department_form": department_form,
             "role_form": role_form,
             "address_form": address_form,
+            "organisation_countries": ORGANISATION_COUNTRIES,
         },
     )
 
@@ -128,22 +126,88 @@ def user_registered_email_sent(request):
     return render(request, "healthcare_worker_signup/user_registered_email_sent.html")
 
 
+def custom_password_change(request):
+    logger.info("Password change form submitted")
+    if request.method == "POST":
+        form = CustomPasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            logger.info("Form is valid, proceeding with password change")
+            user = form.save()
+            update_session_auth_hash(
+                request, user
+            )  # Keep the user logged in after changing the password
+
+            # Retrieve the HealthcareWorker instance and update temp_password_used
+            worker = HealthcareWorker.objects.get(user=user)
+            worker.temp_password_used = True
+            worker.save()
+
+            logger.info(
+                f"Password for user {user.username} changed successfully. temp_password_used set to True."
+            )
+            messages.success(request, "Your password was successfully updated!")
+            return redirect("BINA_healthcare_workers:password_change_done")
+        else:
+            messages.error(request, "Please correct the errors below.")
+            logger.warning("Form is invalid: " + str(form.errors))
+    else:
+        form = CustomPasswordChangeForm(user=request.user)
+    return render(
+        request, "healthcare_worker_signup/custom_password_change.html", {"form": form}
+    )
+
+
 # HEALTHCARE WORKER PROFILE
 
 
 def healthcare_user_login(request):
+    logger.info("Login form submitted")
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
+            logger.info("Login form is valid")
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)
-                return redirect("BINA_healthcare_workers:healthcare-user-profile")
+                try:
+                    worker = HealthcareWorker.objects.get(user=user)
+                    logger.info(f"User {username} authenticated successfully")
+                    # Check if the user is logging in with the temp password for the first time
+                    if not worker.temp_password_used:
+                        worker.temp_password_used = True
+                        worker.save()
+                        logger.info(
+                            f"User {username} is logging in with temp password, redirecting to change password"
+                        )
+                        login(request, user)
+                        # Redirect the user to change their temp password
+                        return redirect("BINA_healthcare_workers:password_change")
+                    else:
+                        # User has already changed the password, proceed with normal login
+                        logger.info(
+                            f"User {username} has already changed the temp password, proceeding with login"
+                        )
+                        login(request, user)
+                        # Redirect to the user's profile page or another appropriate page
+                        return redirect(
+                            "BINA_healthcare_workers:healthcare-user-profile"
+                        )
+                except HealthcareWorker.DoesNotExist:
+                    logger.error(
+                        f"No HealthcareWorker instance found for user {username}"
+                    )
+                    messages.error(request, "No corresponding healthcare worker found.")
+                    return render(
+                        request,
+                        "healthcare_worker_profile/healthcare_worker_login.html",
+                        {"form": form},
+                    )
             else:
-                messages.error(request, "Invalid BINA-Q ID or password.")
+                logger.error(f"Invalid login attempt for username {username}")
+                messages.error(request, "Invalid username or password.")
         else:
+            logger.warning(f"Login form is invalid: {form.errors}")
             messages.error(request, "Please correct the errors below.")
     else:
         form = AuthenticationForm()

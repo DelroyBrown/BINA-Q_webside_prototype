@@ -41,6 +41,7 @@ class HealthcareWorker(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="healthcare_worker", default=""
     )
+    temp_password_used = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.department}"
@@ -69,3 +70,4 @@ class HealthcareWorkerPersonalNotes(models.Model):
 
     def __str__(self):
         return f"Note for {self.healthcare_worker.first_name} {self.healthcare_worker.last_name} on {self.created_at.strftime('%Y-%m-%d')}"
+

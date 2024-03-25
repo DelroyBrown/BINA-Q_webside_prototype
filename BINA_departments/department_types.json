@@ -1,0 +1,618 @@
+[
+    {
+        "code": "ACC",
+        "name": "Accident & Emergency"
+    },
+    {
+        "code": "ADM",
+        "name": "Administration"
+    },
+    {
+        "code": "ALL",
+        "name": "Allergy & Immunology"
+    },
+    {
+        "code": "AMB",
+        "name": "Ambulance Services"
+    },
+    {
+        "code": "ANA",
+        "name": "Anesthesiology"
+    },
+    {
+        "code": "AUD",
+        "name": "Audiology"
+    },
+    {
+        "code": "BEH",
+        "name": "Behavioral Health"
+    },
+    {
+        "code": "BIO",
+        "name": "Biochemistry"
+    },
+    {
+        "code": "BLD",
+        "name": "Blood Bank"
+    },
+    {
+        "code": "BMT",
+        "name": "Bone Marrow Transplant"
+    },
+    {
+        "code": "BRN",
+        "name": "Breast Cancer"
+    },
+    {
+        "code": "CAR",
+        "name": "Cardiac Rehabilitation"
+    },
+    {
+        "code": "CHM",
+        "name": "Chemotherapy"
+    },
+    {
+        "code": "CLN",
+        "name": "Clinical Services"
+    },
+    {
+        "code": "CRD",
+        "name": "Cardiology"
+    },
+    {
+        "code": "CRT",
+        "name": "Cardiac Surgery"
+    },
+    {
+        "code": "DEN",
+        "name": "Dentistry"
+    },
+    {
+        "code": "DER",
+        "name": "Dermatology"
+    },
+    {
+        "code": "DIA",
+        "name": "Diabetic Care"
+    },
+    {
+        "code": "DIE",
+        "name": "Dietetics"
+    },
+    {
+        "code": "DVA",
+        "name": "Diagnostic Imaging"
+    },
+    {
+        "code": "EAR",
+        "name": "Ear, Nose & Throat"
+    },
+    {
+        "code": "ECG",
+        "name": "Electrocardiography"
+    },
+    {
+        "code": "EMR",
+        "name": "Emergency Medicine"
+    },
+    {
+        "code": "EMT",
+        "name": "Emergency Medical Technicians"
+    },
+    {
+        "code": "END",
+        "name": "Endocrinology"
+    },
+    {
+        "code": "EPL",
+        "name": "Epilepsy"
+    },
+    {
+        "code": "FER",
+        "name": "Fertility Services"
+    },
+    {
+        "code": "GAS",
+        "name": "Gastroenterology"
+    },
+    {
+        "code": "GEN",
+        "name": "General Practice"
+    },
+    {
+        "code": "GER",
+        "name": "Geriatrics"
+    },
+    {
+        "code": "GYN",
+        "name": "Gynecology"
+    },
+    {
+        "code": "HEM",
+        "name": "Hematology"
+    },
+    {
+        "code": "HEP",
+        "name": "Hepatology"
+    },
+    {
+        "code": "HOS",
+        "name": "Hospice Care"
+    },
+    {
+        "code": "HPV",
+        "name": "Human Papillomavirus"
+    },
+    {
+        "code": "HRM",
+        "name": "Human Resources Management"
+    },
+    {
+        "code": "ICU",
+        "name": "Intensive Care Unit"
+    },
+    {
+        "code": "IFD",
+        "name": "Infectious Diseases"
+    },
+    {
+        "code": "INF",
+        "name": "Infertility Services"
+    },
+    {
+        "code": "INR",
+        "name": "Inpatient Rehabilitation"
+    },
+    {
+        "code": "INT",
+        "name": "Internal Medicine"
+    },
+    {
+        "code": "IVF",
+        "name": "In Vitro Fertilization"
+    },
+    {
+        "code": "LAB",
+        "name": "Laboratory Services"
+    },
+    {
+        "code": "LTC",
+        "name": "Long-Term Care"
+    },
+    {
+        "code": "LYM",
+        "name": "Lymphology"
+    },
+    {
+        "code": "MAM",
+        "name": "Mammography"
+    },
+    {
+        "code": "MED",
+        "name": "Medical Records"
+    },
+    {
+        "code": "MEN",
+        "name": "Mental Health"
+    },
+    {
+        "code": "MTN",
+        "name": "Maternity Services"
+    },
+    {
+        "code": "NEO",
+        "name": "Neonatology"
+    },
+    {
+        "code": "NEP",
+        "name": "Nephrology"
+    },
+    {
+        "code": "NEU",
+        "name": "Neurology"
+    },
+    {
+        "code": "NTR",
+        "name": "Nutrition Services"
+    },
+    {
+        "code": "NUC",
+        "name": "Nuclear Medicine"
+    },
+    {
+        "code": "OBG",
+        "name": "Obstetrics & Gynecology"
+    },
+    {
+        "code": "ONC",
+        "name": "Oncology"
+    },
+    {
+        "code": "ONR",
+        "name": "Oncology Radiotherapy"
+    },
+    {
+        "code": "OPH",
+        "name": "Ophthalmology"
+    },
+    {
+        "code": "OPT",
+        "name": "Optometry"
+    },
+    {
+        "code": "ORT",
+        "name": "Orthopedics"
+    },
+    {
+        "code": "OST",
+        "name": "Osteopathy"
+    },
+    {
+        "code": "OTH",
+        "name": "Otolaryngology"
+    },
+    {
+        "code": "OTO",
+        "name": "Otology"
+    },
+    {
+        "code": "OXY",
+        "name": "Oxygen Therapy"
+    },
+    {
+        "code": "PAL",
+        "name": "Palliative Care"
+    },
+    {
+        "code": "PAR",
+        "name": "Paramedics"
+    },
+    {
+        "code": "PAT",
+        "name": "Pathology"
+    },
+    {
+        "code": "PDE",
+        "name": "Pediatric Dentistry"
+    },
+    {
+        "code": "PED",
+        "name": "Pediatrics"
+    },
+    {
+        "code": "PHM",
+        "name": "Pharmaceutical Services"
+    },
+    {
+        "code": "PHY",
+        "name": "Physiotherapy"
+    },
+    {
+        "code": "PLN",
+        "name": "Planning & Management"
+    },
+    {
+        "code": "PLT",
+        "name": "Plastic Surgery"
+    },
+    {
+        "code": "PMR",
+        "name": "Physical Medicine & Rehabilitation"
+    },
+    {
+        "code": "POD",
+        "name": "Podiatry"
+    },
+    {
+        "code": "PRE",
+        "name": "Preventive Medicine"
+    },
+    {
+        "code": "PRM",
+        "name": "Premises Management"
+    },
+    {
+        "code": "PSY",
+        "name": "Psychiatry"
+    },
+    {
+        "code": "PSYA",
+        "name": "Psychiatric Assessment"
+    },
+    {
+        "code": "PSYC",
+        "name": "Psychiatric Counseling"
+    },
+    {
+        "code": "PSYT",
+        "name": "Psychiatric Therapy"
+    },
+    {
+        "code": "PTH",
+        "name": "Pathology"
+    },
+    {
+        "code": "PUL",
+        "name": "Pulmonology"
+    },
+    {
+        "code": "RAD",
+        "name": "Radiology"
+    },
+    {
+        "code": "RDT",
+        "name": "Radiotherapy"
+    },
+    {
+        "code": "REN",
+        "name": "Renal Care"
+    },
+    {
+        "code": "RES",
+        "name": "Respiratory Care"
+    },
+    {
+        "code": "RHB",
+        "name": "Rehabilitation Services"
+    },
+    {
+        "code": "RHM",
+        "name": "Rheumatology"
+    },
+    {
+        "code": "SLP",
+        "name": "Speech-Language Pathology"
+    },
+    {
+        "code": "SOC",
+        "name": "Social Services"
+    },
+    {
+        "code": "SPI",
+        "name": "Spinal Cord Injury"
+    },
+    {
+        "code": "SPM",
+        "name": "Sports Medicine"
+    },
+    {
+        "code": "SUR",
+        "name": "Surgery"
+    },
+    {
+        "code": "THR",
+        "name": "Therapeutic Radiology"
+    },
+    {
+        "code": "TRA",
+        "name": "Transplant Services"
+    },
+    {
+        "code": "TRU",
+        "name": "Trauma Services"
+    },
+    {
+        "code": "URO",
+        "name": "Urology"
+    },
+    {
+        "code": "VAS",
+        "name": "Vascular Surgery"
+    },
+    {
+        "code": "VIR",
+        "name": "Virology"
+    },
+    {
+        "code": "WMN",
+        "name": "Women's Health"
+    },
+    {
+        "code": "WND",
+        "name": "Wound Care"
+    },
+    {
+        "code": "GNT",
+        "name": "Genetics"
+    },
+    {
+        "code": "IMG",
+        "name": "Imaging Services"
+    },
+    {
+        "code": "IMM",
+        "name": "Immunology"
+    },
+    {
+        "code": "INF",
+        "name": "Infectious Disease"
+    },
+    {
+        "code": "LVR",
+        "name": "Liver Transplant"
+    },
+    {
+        "code": "MAS",
+        "name": "Mastectomy Services"
+    },
+    {
+        "code": "MOB",
+        "name": "Mobile Health Services"
+    },
+    {
+        "code": "NRO",
+        "name": "Neuro-Oncology"
+    },
+    {
+        "code": "NRS",
+        "name": "Nursing Services"
+    },
+    {
+        "code": "OBS",
+        "name": "Obstetrics"
+    },
+    {
+        "code": "ONC",
+        "name": "Oncology"
+    },
+    {
+        "code": "OPR",
+        "name": "Operating Rooms"
+    },
+    {
+        "code": "OSC",
+        "name": "Ostomy Care"
+    },
+    {
+        "code": "PAI",
+        "name": "Pain Management"
+    },
+    {
+        "code": "PAL",
+        "name": "Palliative Care"
+    },
+    {
+        "code": "PCC",
+        "name": "Patient Care Coordinators"
+    },
+    {
+        "code": "PED",
+        "name": "Pediatric Intensive Care Unit"
+    },
+    {
+        "code": "PHS",
+        "name": "Physical Therapy"
+    },
+    {
+        "code": "PLN",
+        "name": "Planning & Management"
+    },
+    {
+        "code": "PRT",
+        "name": "Prosthetics & Orthotics"
+    },
+    {
+        "code": "RDN",
+        "name": "Radiation Oncology"
+    },
+    {
+        "code": "RHB",
+        "name": "Rehabilitation Services"
+    },
+    {
+        "code": "RHM",
+        "name": "Rheumatology"
+    },
+    {
+        "code": "SLP",
+        "name": "Speech-Language Pathology"
+    },
+    {
+        "code": "SNF",
+        "name": "Skilled Nursing Facility"
+    },
+    {
+        "code": "STR",
+        "name": "Stroke Services"
+    },
+    {
+        "code": "TRA",
+        "name": "Transplant Services"
+    },
+    {
+        "code": "URG",
+        "name": "Urgent Care"
+    },
+    {
+        "code": "WND",
+        "name": "Wound Care"
+    },
+    {
+        "code": "TEC",
+        "name": "Health Technology Services"
+    },
+    {
+        "code": "HOR",
+        "name": "Hormonal Health"
+    },
+    {
+        "code": "BLD",
+        "name": "Blood Disorders"
+    },
+    {
+        "code": "GER",
+        "name": "Geriatric Care"
+    },
+    {
+        "code": "CYB",
+        "name": "Cybersecurity for Healthcare"
+    },
+    {
+        "code": "EHR",
+        "name": "Electronic Health Records"
+    },
+    {
+        "code": "MEN",
+        "name": "Men's Health"
+    },
+    {
+        "code": "HEM",
+        "name": "Hemophilia Treatment"
+    },
+    {
+        "code": "THR",
+        "name": "Thrombosis Clinic"
+    },
+    {
+        "code": "DEM",
+        "name": "Dementia Care"
+    },
+    {
+        "code": "PAR",
+        "name": "Parkinson's Disease Treatment"
+    },
+    {
+        "code": "ALS",
+        "name": "ALS (Motor Neurone Disease) Care"
+    },
+    {
+        "code": "HIT",
+        "name": "Health Informatics & Technology"
+    },
+    {
+        "code": "MEN",
+        "name": "Menopause Clinic"
+    },
+    {
+        "code": "AND",
+        "name": "Andrology (Male Reproductive Health)"
+    },
+    {
+        "code": "LEU",
+        "name": "Leukemia Services"
+    },
+    {
+        "code": "LYM",
+        "name": "Lymphoma Services"
+    },
+    {
+        "code": "MDS",
+        "name": "Myelodysplastic Syndrome Services"
+    },
+    {
+        "code": "MPD",
+        "name": "Myeloproliferative Disorders Services"
+    },
+    {
+        "code": "AAC",
+        "name": "Audiology & Assistive Communication"
+    },
+    {
+        "code": "HOM",
+        "name": "Home Health Services"
+    },
+    {
+        "code": "CBT",
+        "name": "Cognitive Behavioral Therapy"
+    }
+]

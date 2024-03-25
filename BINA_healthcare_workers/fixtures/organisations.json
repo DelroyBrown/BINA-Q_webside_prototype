@@ -304,5 +304,194 @@
       "ods_code": "Well3t8qn",
       "organisation_logo": null
     }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 35,
+    "fields": {
+      "organisation_name": "Barlborough NHS Treatment Centre",
+      "ods_code": "Barl9z6ux",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 36,
+    "fields": {
+      "organisation_name": "Basildon and Thurrock University Hospitals NHS Foundation Trust",
+      "ods_code": "Basi2d3ef",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 37,
+    "fields": {
+      "organisation_name": "Papworth Hospital NHS Foundation Trust",
+      "ods_code": "Papw4r5tq",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 38,
+    "fields": {
+      "organisation_name": "Gloucestershire Hospitals NHS Foundation Trust",
+      "ods_code": "Glou8u9vx",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 39,
+    "fields": {
+      "organisation_name": "Birmingham Women's and Children's NHS Foundation Trust",
+      "ods_code": "Birm6y7zp",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 40,
+    "fields": {
+      "organisation_name": "Newham Hospital",
+      "ods_code": "Newh2d3eg",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 41,
+    "fields": {
+      "organisation_name": "West Suffolk NHS Foundation Trust",
+      "ods_code": "West4r5tp",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 42,
+    "fields": {
+      "organisation_name": "One Healthcare",
+      "ods_code": "One9z6uw",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 43,
+    "fields": {
+      "organisation_name": "Practice Plus Group",
+      "ods_code": "Prac7d8vx",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 44,
+    "fields": {
+      "organisation_name": "Huntercombe Group",
+      "ods_code": "Hunt3t8qo",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 45,
+    "fields": {
+      "organisation_name": "GenesisCare",
+      "ods_code": "Gene6y7zq",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 46,
+    "fields": {
+      "organisation_name": "Panacea Healthcare",
+      "ods_code": "Pana8k9lm",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 47,
+    "fields": {
+      "organisation_name": "Fairfield Independent Hospital",
+      "ods_code": "Fair2w8rn",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 48,
+    "fields": {
+      "organisation_name": "London Welbeck Hospital",
+      "ods_code": "Lond6y1vi",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 49,
+    "fields": {
+      "organisation_name": "Horder Healthcare",
+      "ods_code": "Hord3j6ql",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 50,
+    "fields": {
+      "organisation_name": "South East London Doctors Co-operative",
+      "ods_code": "Sout2p9kt",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 51,
+    "fields": {
+      "organisation_name": "London North West University Healthcare NHS Trust",
+      "ods_code": "Lond4e5fg",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 52,
+    "fields": {
+      "organisation_name": "Northumbria Healthcare NHS Foundation Trust",
+      "ods_code": "Nort8u9vy",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 53,
+    "fields": {
+      "organisation_name": "Northern Devon Healthcare NHS Trust",
+      "ods_code": "Nort6y7zr",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 54,
+    "fields": {
+      "organisation_name": "Rotherham NHS Foundation Trust",
+      "ods_code": "Roth2d3eg",
+      "organisation_logo": null
+    }
+  },
+  {
+    "model": "BINA_organisations.Organisation",
+    "pk": 55,
+    "fields": {
+      "organisation_name": "Wrightington, Wigan and Leigh NHS Foundation Trust",
+      "ods_code": "Wrig4r5tq",
+      "organisation_logo": null
+    }
   }
 ]
